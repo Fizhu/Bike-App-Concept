@@ -1,26 +1,64 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion rootProject.compileSdkVersion
     buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.fizhu.bikeappconcept"
-        minSdkVersion 21
-        targetSdkVersion 29
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables.useSupportLibrary true
     }
 
     buildTypes {
-        release {
+        debug {
+            shrinkResources false
             minifyEnabled false
+            debuggable true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles fileTree('proguard').asList().toArray()
         }
+
+        release {
+            shrinkResources true
+            minifyEnabled true
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles fileTree('proguard').asList().toArray()
+
+        }
+
+        android.applicationVariants.all { variant ->
+            variant.outputs.all { output ->
+                def formattedDate = new Date().format('ddMMyy')
+                outputFileName = output.outputFile.name.replace(".apk", "-${variant.versionName}-${formattedDate}.apk")
+
+            }
+        }
+    }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    // work-runtime-ktx 2.1.0 and above now requires Java 8
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 }
 
@@ -33,5 +71,50 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // Material Design
+    implementation "com.google.android.material:material:$material_version"
+
+    // Navigation Components
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
+
+    // Fragment
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+
+    // ViewPager2
+    implementation "androidx.viewpager2:viewpager2:$viewpager2_version"
+
+    // Lifecycle Components
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+
+    // Rx
+    implementation "io.reactivex.rxjava2:rxjava:$rxjava2_version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+    implementation "com.jakewharton.rxbinding3:rxbinding:$rxbinding_version"
+
+    // koin
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    implementation "org.koin:koin-androidx-fragment:$koin_version"
+    implementation "org.koin:koin-androidx-ext:$koin_version"
+
+    // Room components
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-rxjava2:$room_version"
+    testImplementation "androidx.room:room-testing:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+    // Image Picker
+    implementation "com.github.esafirm.android-image-picker:imagepicker:$imagepicker_version"
+
+    // Timber
+    implementation "com.jakewharton.timber:timber:$timber_version"
 
 }
