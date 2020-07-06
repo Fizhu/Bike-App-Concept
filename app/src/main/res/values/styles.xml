@@ -1,22 +1,15 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/colorOnBackground</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorOnSurface">@color/colorOnBackground</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorSurface">@color/colorPrimary</item>
+        <item name="colorSecondary">@color/colorPrimaryDark</item>
+        <item name="android:colorBackground">@color/colorPrimaryDark</item>
     </style>
-
-<!--    <style name="Base.Theme.Sunflower" parent="Theme.MaterialComponents.DayNight.NoActionBar">-->
-<!--        <item name="colorPrimary">@color/sunflower_green_500</item>-->
-<!--        <item name="colorOnPrimary">@color/sunflower_yellow_500</item>-->
-<!--        <item name="colorPrimaryDark">@color/sunflower_green_700</item>-->
-<!--        <item name="colorOnSurface">@color/sunflower_black</item>-->
-<!--        <item name="colorAccent">@color/sunflower_green_700</item>-->
-<!--        <item name="colorSurface">@color/sunflower_gray_50</item>-->
-<!--        <item name="colorSecondary">@color/sunflower_yellow_500</item>-->
-<!--        <item name="android:colorBackground">@color/sunflower_green_500</item>-->
-<!--    </style>-->
 
 <!--    <style name="Theme.Sunflower" parent="Base.Theme.Sunflower"/>-->
 
@@ -30,5 +23,170 @@
 <!--    <style name="TextAppearance.Sunflower.Toolbar.Text" parent="TextAppearance.MaterialComponents.Headline5" >-->
 <!--        <item name="android:textColor">?attr/colorOnSurface</item>-->
 <!--    </style>-->
+
+    <style name="ImagePickerTheme" parent="ef_BaseTheme">
+        <item name="colorPrimary">#212121</item>
+        <item name="colorPrimaryDark">@color/md_black_1000</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="fontFamily">@font/muli_regular</item>
+    </style>
+
+    <style name="button_text" parent="muliBoldNormal">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+<!--    <style name="toolbar_text" parent="muliBoldLarge">-->
+<!--        <item name="android:textColor">@color/text_header_color</item>-->
+<!--    </style>-->
+
+    //clickable
+    <style name="clickableBackgroudBorderless">
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="clickableBackgroudBorder">
+        <item name="android:background">?attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="clickableBorderless">
+        <item name="android:foreground">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="clickableBorder">
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    //text size
+    <style name="fontExtraSmall">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="fontSmall">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="fontNormal">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="fontMedium">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="fontLarge">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="fontExtraLarge">
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    //muli bold
+    <style name="muliBoldExtraSmall" parent="fontExtraSmall">
+        <item name="fontFamily">@font/muli_bold</item>
+    </style>
+
+    <style name="muliBoldSmall" parent="fontSmall">
+        <item name="fontFamily">@font/muli_bold</item>
+    </style>
+
+    <style name="muliBoldNormal" parent="fontNormal">
+        <item name="fontFamily">@font/muli_bold</item>
+    </style>
+
+    <style name="muliBoldMedium" parent="fontMedium">
+        <item name="fontFamily">@font/muli_bold</item>
+    </style>
+
+    <style name="muliBoldLarge" parent="fontLarge">
+        <item name="fontFamily">@font/muli_bold</item>
+    </style>
+
+    <style name="muliBoldExtraLarge" parent="fontExtraLarge">
+        <item name="fontFamily">@font/muli_bold</item>
+    </style>
+
+    //muli extra bold
+    <style name="muliExtraBoldExtraSmall" parent="fontExtraSmall">
+        <item name="fontFamily">@font/muli_extra_bold</item>
+    </style>
+
+    <style name="muliExtraBoldSmall" parent="fontSmall">
+        <item name="fontFamily">@font/muli_extra_bold</item>
+    </style>
+
+    <style name="muliExtraBoldNormal" parent="fontNormal">
+        <item name="fontFamily">@font/muli_extra_bold</item>
+    </style>
+
+    <style name="muliExtraBoldMedium" parent="fontMedium">
+        <item name="fontFamily">@font/muli_extra_bold</item>
+    </style>
+
+    <style name="muliExtraBoldLarge" parent="fontLarge">
+        <item name="fontFamily">@font/muli_extra_bold</item>
+    </style>
+
+    <style name="muliExtraBoldExtraLarge" parent="fontExtraLarge">
+        <item name="fontFamily">@font/muli_extra_bold</item>
+    </style>
+
+    //muli light
+    <style name="muliLightExtraSmall" parent="fontExtraSmall">
+        <item name="fontFamily">@font/muli_light</item>
+    </style>
+
+    <style name="muliLightSmall" parent="fontSmall">
+        <item name="fontFamily">@font/muli_light</item>
+    </style>
+
+    <style name="muliLightNormal" parent="fontNormal">
+        <item name="fontFamily">@font/muli_light</item>
+    </style>
+
+    <style name="muliLightMedium" parent="fontMedium">
+        <item name="fontFamily">@font/muli_light</item>
+    </style>
+
+    <style name="muliLightLarge" parent="fontLarge">
+        <item name="fontFamily">@font/muli_light</item>
+    </style>
+
+    <style name="muliLightExtraLarge" parent="fontExtraLarge">
+        <item name="fontFamily">@font/muli_light</item>
+    </style>
+
+    //muli extra light
+    <style name="muliExtraLightExtraSmall" parent="fontExtraSmall">
+        <item name="fontFamily">@font/muli_extra_light</item>
+    </style>
+
+    <style name="muliExtraLightSmall" parent="fontSmall">
+        <item name="fontFamily">@font/muli_extra_light</item>
+    </style>
+
+    <style name="muliExtraLightNormal" parent="fontNormal">
+        <item name="fontFamily">@font/muli_extra_light</item>
+    </style>
+
+    <style name="muliExtraLightMedium" parent="fontMedium">
+        <item name="fontFamily">@font/muli_extra_light</item>
+    </style>
+
+    <style name="muliExtraLightLarge" parent="fontLarge">
+        <item name="fontFamily">@font/muli_extra_light</item>
+    </style>
+
+    <style name="muliExtraLightExtraLarge" parent="fontExtraLarge">
+        <item name="fontFamily">@font/muli_extra_light</item>
+    </style>
 
 </resources>

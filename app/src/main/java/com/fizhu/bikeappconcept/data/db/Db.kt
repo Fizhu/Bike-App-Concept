@@ -1,0 +1,40 @@
+package com.fizhu.bikeappconcept.data.db
+
+import android.content.Context
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
+
+/**
+ * Created by fizhu on 06,July,2020
+ * https://github.com/Fizhu
+ */
+@Database(entities = [Menu::class], version = 1, exportSchema = false)
+abstract class Db: RoomDatabase() {
+
+    // --- DAO ---
+    abstract fun userDao(): UserDao
+
+    companion object {
+
+        // --- SINGLETON ---
+        @Volatile
+        private var INSTANCE: Db? = null
+
+        fun getInstance(context: Context): Db {
+            val tempInstance = INSTANCE
+            if (tempInstance != null) {
+                return tempInstance
+            }
+            synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    Db::class.java,
+                    "vizita_db"
+                ).build()
+                INSTANCE = instance
+                return instance
+            }
+        }
+    }
+}
