@@ -5,6 +5,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
+import com.fizhu.bikeappconcept.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import timber.log.Timber
@@ -14,21 +15,19 @@ import timber.log.Timber
  * https://github.com/Fizhu
  */
 
-class App: Application(){
+class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
         context = this
         singleton = this
 
-//        if (BuildConfig.DEBUG) {
-//            Timber.plant(Timber.DebugTree())
-//        }
+        Timber.plant(Timber.DebugTree())
 
-//        startKoin {
-//            androidContext(this@App)
-//            modules(appModule)
-//        }
+        startKoin {
+            androidContext(this@App)
+            modules(appModule)
+        }
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
     }
 
@@ -52,9 +51,6 @@ class App: Application(){
 
         val spUser: SharedPreferences
             get() = getInstance!!.getSharedPreferences("myUserPref", Context.MODE_PRIVATE)
-
-        val spData: SharedPreferences
-            get() = getInstance!!.getSharedPreferences("myDataPref", Context.MODE_PRIVATE)
     }
 
 }

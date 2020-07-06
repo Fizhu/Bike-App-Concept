@@ -117,4 +117,7 @@ dependencies {
     // Timber
     implementation "com.jakewharton.timber:timber:$timber_version"
 
+    // Gson
+    implementation 'com.google.code.gson:gson:2.8.6'
+
 }

@@ -9,11 +9,11 @@ import org.koin.dsl.module
 
 //val networkModule = module {
 
-//val repositoryModule = module {
+val repositoryModule = module {
 //    single<Repository> { AppRepository(get()) }
-//}
+}
 
 val viewModelModule = module {
 }
 
-//val appModule = listOf(repositoryModule, viewModelModule)
+val appModule = listOf(repositoryModule, viewModelModule)
