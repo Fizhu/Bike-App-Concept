@@ -88,7 +88,6 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_login"
-                style="@style/button_text"
                 android:layout_marginBottom="@dimen/padding"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -96,9 +95,9 @@
                 android:padding="@dimen/margin"
                 android:text="@string/login"
                 android:textAllCaps="false"
-                app:backgroundTint="@color/colorAccent"
                 android:textColor="@color/colorPrimaryDark"
                 app:cornerRadius="@dimen/margin_super"
+                app:backgroundTint="@color/button_background"
                 app:layout_constraintBottom_toTopOf="@+id/tv_signup"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"

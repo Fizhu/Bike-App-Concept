@@ -8,4 +8,8 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="signup">Don\'t have an account ?</string>
+    <string name="register">Register</string>
+    <string name="fullname">Full Name</string>
+    <string name="repeatpw">Repeat Password</string>
+    <string name="submit">Submit</string>
 </resources>

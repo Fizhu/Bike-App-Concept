@@ -31,14 +31,6 @@
         <item name="fontFamily">@font/muli_regular</item>
     </style>
 
-    <style name="button_text" parent="muliBoldNormal">
-        <item name="android:textColor">@android:color/white</item>
-    </style>
-
-<!--    <style name="toolbar_text" parent="muliBoldLarge">-->
-<!--        <item name="android:textColor">@color/text_header_color</item>-->
-<!--    </style>-->
-
     //clickable
     <style name="clickableBackgroudBorderless">
         <item name="android:background">?attr/selectableItemBackgroundBorderless</item>

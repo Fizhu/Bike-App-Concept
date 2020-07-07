@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.fizhu.bikeappconcept.R
 import com.fizhu.bikeappconcept.databinding.FragmentLoginBinding
 import com.fizhu.bikeappconcept.utils.base.BaseFragment
@@ -43,6 +44,7 @@ class LoginFragment : BaseFragment() {
     override fun onInit() {
         binding?.btnLogin?.isEnabled = false
         handleBackPressed()
+        onClick()
     }
 
 //    private fun validation(et: TextInputEditText, til: TextInputLayout, type: Int) {
@@ -76,6 +78,10 @@ class LoginFragment : BaseFragment() {
 //                binding?.btnLogin?.isEnabled = isEmailValid && isPwValid
 //            })
 //    }
+
+    private fun onClick() {
+        binding?.tvSignup?.setOnClickListener { findNavController().navigate(R.id.action_loginFragment_to_registerFragment) }
+    }
 
     private fun handleBackPressed() {
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
