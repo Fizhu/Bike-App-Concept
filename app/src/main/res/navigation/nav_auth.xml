@@ -5,4 +5,9 @@
     android:id="@+id/nav_auth"
     app:startDestination="@id/loginFragment">
 
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.fizhu.bikeappconcept.ui.fragment.LoginFragment"
+        tools:layout="@layout/fragment_login"
+        android:label="LoginFragment" />
 </navigation>

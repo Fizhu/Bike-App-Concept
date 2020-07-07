@@ -4,4 +4,8 @@
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Malesuada sem nullam dapibus enim, odio at velit a non. Tristique aliquet faucibus ridiculus fermentum arcu nullam magna. Fermentum et tincidunt dui turpis gravida tortor, pulvinar dui vel. Diam in viverra vitae at risus vulputate. Bibendum sed odio convallis ipsum, ut penatibus hendrerit. Orci adipiscing dignissim nulla vitae leo, nec sollicitudin mauris. Risus, vel bibendum diam donec turpis rutrum. Hendrerit at mauris magnis phasellus vitae, ac. Purus sit mi nulla vitae porttitor venenatis. Pulvinar euismod velit pulvinar massa posuere urna. Faucibus cras adipiscing neque enim id. Odio non, tellus felis nunc.</string>
 
     <string name="label_do_exit">Press one more time to exit</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="signup">Don\'t have an account ?</string>
 </resources>

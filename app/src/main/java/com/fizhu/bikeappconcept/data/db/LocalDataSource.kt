@@ -1,6 +1,5 @@
 package com.fizhu.bikeappconcept.data.db
 
-import com.fizhu.bikeappconcept.App
 import com.fizhu.bikeappconcept.data.models.User
 import com.fizhu.bikeappconcept.utils.ext.doBack
 import com.fizhu.bikeappconcept.utils.ext.loge
@@ -24,34 +23,10 @@ open class LocalDataSource constructor(
         )
     }
 
-    fun getUserByUsernamePassword(username: String, password: String) {
-        doBack(
-            action = {
-                userDao.getUserByUsernamePassword(username, password)
-            },
-            success = { logi("success get user by username & password from db") },
-            error = { loge("failed get user from db") }
-        )
-    }
+    fun getUserByUsernamePassword(username: String, password: String) = userDao.getUserByUsernamePassword(username, password)
 
-    fun getUserByUsername(username: String) {
-        doBack(
-            action = {
-                userDao.getUserByUsername(username)
-            },
-            success = { logi("success get user by username from db") },
-            error = { loge("failed iget user by username from db") }
-        )
-    }
+    fun getUserByUsername(username: String) = userDao.getUserByUsername(username)
 
-    fun getUserById(id: Int) {
-        doBack(
-            action = {
-                userDao.getUserById(id)
-            },
-            success = { logi("success get user by id from db") },
-            error = { loge("failed iget user from by id db") }
-        )
-    }
+    fun getUserById(id: Int) = userDao.getUserById(id)
 
 }

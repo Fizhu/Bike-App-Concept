@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatDelegate
-import com.fizhu.bikeappconcept.utils.pref.UserSession
+import com.fizhu.bikeappconcept.data.pref.UserSession
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import io.reactivex.disposables.CompositeDisposable
 
@@ -23,24 +23,24 @@ val Int.dp: Int
 val Int.dpf: Float
     get() = (this * Resources.getSystem().displayMetrics.density)
 
-fun Activity.makeStatusBarTransparentFullScreen() {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        window.apply {
-            clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                decorView.systemUiVisibility =
-                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_VISIBLE
-                if (UserSession.keyTheme != AppCompatDelegate.MODE_NIGHT_YES) {
-                    decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_VISIBLE or View . SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-                }
-            } else {
-                decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-            }
-            statusBarColor = Color.TRANSPARENT
-        }
-    }
-}
+//fun Activity.makeStatusBarTransparentFullScreen() {
+//    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//        window.apply {
+//            clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+//            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                decorView.systemUiVisibility =
+//                    View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_VISIBLE
+//                if (UserSession.keyTheme != AppCompatDelegate.MODE_NIGHT_YES) {
+//                    decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_VISIBLE or View . SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+//                }
+//            } else {
+//                decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+//            }
+//            statusBarColor = Color.TRANSPARENT
+//        }
+//    }
+//}
 
 fun View.setMargin(left: Int, top: Int, right: Int, bottom: Int) {
     val menuLayoutParams = this.layoutParams as ViewGroup.MarginLayoutParams

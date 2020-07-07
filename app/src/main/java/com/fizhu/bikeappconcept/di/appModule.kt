@@ -3,8 +3,12 @@ package com.fizhu.bikeappconcept.di
 import androidx.room.Room
 import com.fizhu.bikeappconcept.data.db.Db
 import com.fizhu.bikeappconcept.data.db.LocalDataSource
+import com.fizhu.bikeappconcept.data.pref.PrefDataSource
 import com.fizhu.bikeappconcept.data.repository.AppRepository
 import com.fizhu.bikeappconcept.data.repository.Repository
+import com.fizhu.bikeappconcept.viewmodels.LoginViewModel
+import com.fizhu.bikeappconcept.viewmodels.SplashViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 /**
@@ -13,7 +17,11 @@ import org.koin.dsl.module
  */
 
 val repositoryModule = module {
-    single<Repository> { AppRepository(get()) }
+    single<Repository> { AppRepository(get(), get()) }
+}
+
+val persistenceModule = module {
+    single { PrefDataSource() }
 }
 
 val databaseModule = module {
@@ -29,6 +37,8 @@ val dataSourceModule = module {
 }
 
 val viewModelModule = module {
+    viewModel { SplashViewModel(get()) }
+    viewModel { LoginViewModel(get()) }
 }
 
-val appModule = listOf(databaseModule, dataSourceModule, repositoryModule, viewModelModule)
+val appModule = listOf(persistenceModule, databaseModule, dataSourceModule, repositoryModule, viewModelModule)

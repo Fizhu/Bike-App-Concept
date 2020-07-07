@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //margin
+    <dimen name="margin">16dp</dimen>
+    <dimen name="margin_extra">32dp</dimen>
+    <dimen name="margin_super">64dp</dimen>
+
+    //padding
+    <dimen name="padding">8dp</dimen>
+    <dimen name="half_padding">4dp</dimen>
+
+    <dimen name="default_height">54dp</dimen>
+
+    <dimen name="pageMargin">8dp</dimen>
+    <dimen name="offset">48dp</dimen>
+    <dimen name="pageMarginAndOffset">80dp</dimen>
+
+</resources>
