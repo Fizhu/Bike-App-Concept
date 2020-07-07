@@ -13,7 +13,7 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "user_table")
 data class User(
-    @PrimaryKey(autoGenerate = false)
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     @Expose @SerializedName("id")
     val id: Int? = 0,

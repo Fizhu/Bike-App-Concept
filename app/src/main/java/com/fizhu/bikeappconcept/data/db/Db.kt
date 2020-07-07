@@ -4,12 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.fizhu.bikeappconcept.data.models.User
 
 /**
  * Created by fizhu on 06,July,2020
  * https://github.com/Fizhu
  */
-@Database(entities = [Menu::class], version = 1, exportSchema = false)
+@Database(entities = [User::class], version = 1, exportSchema = false)
 abstract class Db: RoomDatabase() {
 
     // --- DAO ---
@@ -30,7 +31,7 @@ abstract class Db: RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     Db::class.java,
-                    "vizita_db"
+                    "bike_db"
                 ).build()
                 INSTANCE = instance
                 return instance

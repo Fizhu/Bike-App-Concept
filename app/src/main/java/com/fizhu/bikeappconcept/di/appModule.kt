@@ -1,5 +1,10 @@
 package com.fizhu.bikeappconcept.di
 
+import androidx.room.Room
+import com.fizhu.bikeappconcept.data.db.Db
+import com.fizhu.bikeappconcept.data.db.LocalDataSource
+import com.fizhu.bikeappconcept.data.repository.AppRepository
+import com.fizhu.bikeappconcept.data.repository.Repository
 import org.koin.dsl.module
 
 /**
@@ -7,13 +12,23 @@ import org.koin.dsl.module
  * Hvyz.anbiya@gmail.com
  */
 
-//val networkModule = module {
-
 val repositoryModule = module {
-//    single<Repository> { AppRepository(get()) }
+    single<Repository> { AppRepository(get()) }
+}
+
+val databaseModule = module {
+    single {
+        Room.databaseBuilder(get(), Db::class.java, "bike_db")
+            .fallbackToDestructiveMigration().build()
+    }
+    single { get<Db>().userDao() }
+}
+
+val dataSourceModule = module {
+    single { LocalDataSource(get()) }
 }
 
 val viewModelModule = module {
 }
 
-val appModule = listOf(repositoryModule, viewModelModule)
+val appModule = listOf(databaseModule, dataSourceModule, repositoryModule, viewModelModule)

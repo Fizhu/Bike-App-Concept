@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.fizhu.bikeappconcept.data.models.User
 import io.reactivex.Observable
 
 /**
@@ -14,27 +15,28 @@ import io.reactivex.Observable
 @Dao
 interface UserDao {
 
-//    @get:Query("SELECT * FROM menu_table")
-//    val all: Observable<List<Menu>>
-//
-//    @get:Query("SELECT * FROM menu_table WHERE quantity > 0")
-//    val getListCart: Observable<List<Menu>>
-//
-//    @Insert(onConflict = OnConflictStrategy.IGNORE)
-//    fun insertAll(questionList : List<Menu>)
-//
-//    @Insert(onConflict = OnConflictStrategy.REPLACE)
-//    fun insert(menu: Menu)
-//
-//    @Query("DELETE FROM menu_table")
-//    fun deleteAll()
-//
-//    @Query("DELETE FROM menu_table WHERE id = :id")
-//    fun delete(id: String)
-//
-//    @Query("UPDATE menu_table SET note = :note WHERE id = :id")
-//    fun updateNotes(id: String, note: String)
-//
-//    @Query("UPDATE menu_table SET quantity = :quantity WHERE id = :id")
-//    fun updateQuantity(id: String, quantity: Int)
+    @get:Query("SELECT * FROM user_table")
+    val all: Observable<List<User>>
+
+    @Query("SELECT * FROM user_table WHERE id = :id")
+    fun getUserById(id: Int): Observable<User>
+
+    @Query("SELECT * FROM user_table WHERE username = :username AND password = :password")
+    fun getUserByUsernamePassword(username: String, password: String): Observable<User>
+
+    @Query("SELECT * FROM user_table WHERE username = :username")
+    fun getUserByUsername(username: String): Observable<User>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(user: User)
+
+    @Query("UPDATE user_table SET name = :name WHERE id = :id")
+    fun update(id: Int, name: String)
+
+    @Query("UPDATE user_table SET photo = :photo WHERE id = :id")
+    fun updatePhoto(id: Int, photo: String)
+
+    @Query("UPDATE user_table SET photo = :password WHERE id = :id")
+    fun updatePassword(id: Int, password: String)
+
 }
