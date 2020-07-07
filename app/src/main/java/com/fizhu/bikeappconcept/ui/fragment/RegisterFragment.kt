@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.fizhu.bikeappconcept.R
 import com.fizhu.bikeappconcept.databinding.FragmentRegisterBinding
 import com.fizhu.bikeappconcept.utils.base.BaseFragment
@@ -40,21 +43,20 @@ class RegisterFragment : BaseFragment() {
 
     override fun onInit() {
         binding?.btnRegis?.isEnabled = false
-        handleBackPressed()
         onClick()
+        setImageProfile()
     }
 
     private fun onClick() {
         binding?.toolbar?.setNavigationOnClickListener { findNavController().navigateUp() }
     }
 
-    private fun handleBackPressed() {
-        val onBackPressedCallback = object : OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                findNavController().navigateUp()
-            }
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
+    private fun setImageProfile() {
+        Glide.with(this)
+            .load(R.drawable.default_image_profile)
+            .error(R.drawable.default_image_profile)
+            .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(16)))
+            .into(binding?.ivProfile!!)
     }
 
     override fun onDestroyView() {
