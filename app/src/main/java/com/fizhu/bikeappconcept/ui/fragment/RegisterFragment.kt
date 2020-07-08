@@ -13,9 +13,16 @@ import com.bumptech.glide.request.RequestOptions
 import com.fizhu.bikeappconcept.R
 import com.fizhu.bikeappconcept.databinding.FragmentRegisterBinding
 import com.fizhu.bikeappconcept.utils.base.BaseFragment
+import com.fizhu.bikeappconcept.utils.ext.observe
 import com.fizhu.bikeappconcept.viewmodels.RegisterViewModel
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
+import com.jakewharton.rxbinding3.widget.textChangeEvents
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.concurrent.TimeUnit
 
 /**
  * Created by fizhu on 07,July,2020
@@ -28,6 +35,10 @@ class RegisterFragment : BaseFragment() {
     private val compositeDisposable by lazy {
         CompositeDisposable()
     }
+    private var isFullNameValid = false
+    private var isUsernameValid = false
+    private var isPasswordValid = false
+    private var isRepeatPasswordValid = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,6 +56,96 @@ class RegisterFragment : BaseFragment() {
         binding?.btnRegis?.isEnabled = false
         onClick()
         setImageProfile()
+        initValidation()
+        observe(viewModel.isUsernameExist) {
+            if (it) {
+                isUsernameValid = true
+                binding?.tilUsername?.isHelperTextEnabled = false
+                checkvalid()
+            } else {
+                isUsernameValid = false
+                binding?.tilUsername?.isHelperTextEnabled = true
+                binding?.tilUsername?.helperText = getString(R.string.username_exist)
+                checkvalid()
+            }
+        }
+    }
+
+    private fun initValidation() {
+        validation(binding?.etFullname!!, binding?.tilFullname!!, 0)
+        validation(binding?.etUsername!!, binding?.tilUsername!!, 1)
+        validation(binding?.etPw!!, binding?.tilPw!!, 2)
+        validation(binding?.etPwRepeat!!, binding?.tilPwRepeat!!, 3)
+    }
+
+    private fun validation(et: TextInputEditText, til: TextInputLayout, type: Int) {
+        val observable = et.textChangeEvents()
+        compositeDisposable.add(observable
+            .skip(1)
+            .debounce(400, TimeUnit.MILLISECONDS)
+            .map { it.text }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnNext {
+                if (it.length < 6) {
+                    til.isHelperTextEnabled = true
+                    til.helperText = getString(R.string.invalid_validation)
+                    when (type) {
+                        0 -> {
+                            isFullNameValid = false
+                        }
+                        1 -> {
+                            isUsernameValid = false
+                        }
+                        2 -> {
+                            isPasswordValid = false
+                        }
+                        3 -> {
+                            isRepeatPasswordValid = false
+                        }
+                    }
+                } else {
+                    when (type) {
+                        0 -> {
+                            isFullNameValid = true
+                            til.isHelperTextEnabled = false
+                        }
+                        1 -> {
+                            viewModel.checkUsername()
+                        }
+                        2 -> {
+                            isPasswordValid = true
+                            til.isHelperTextEnabled = false
+                        }
+                        3 -> {
+                            isRepeatPasswordValid = true
+                            til.isHelperTextEnabled = false
+                        }
+                    }
+                }
+
+            }
+            .subscribe { checkvalid() })
+    }
+
+
+    private fun checkvalid() {
+        var isPwMatch = false
+
+        // check password
+        val pwLen = viewModel.password.value?.length ?: 0
+        if (pwLen > 5) {
+            if (viewModel.password.value == viewModel.repeatPassword.value) {
+                binding?.tilPwRepeat?.isHelperTextEnabled = false
+                isPwMatch = true
+            } else {
+                binding?.tilPwRepeat?.helperText = getString(R.string.didnt_match_validation)
+                isPwMatch = false
+            }
+        }
+        binding?.btnRegis?.isEnabled =
+            isFullNameValid && isUsernameValid && isPasswordValid && isRepeatPasswordValid && isPwMatch
+
     }
 
     private fun onClick() {
@@ -61,8 +162,6 @@ class RegisterFragment : BaseFragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-//        binding?.etEmail?.text?.clear()
-//        binding?.etPw?.text?.clear()
         compositeDisposable.clear()
     }
 }

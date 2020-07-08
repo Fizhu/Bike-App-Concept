@@ -12,4 +12,7 @@
     <string name="fullname">Full Name</string>
     <string name="repeatpw">Repeat Password</string>
     <string name="submit">Submit</string>
+    <string name="invalid_validation">Format invalid or too short</string>
+    <string name="username_exist">Username has been taken</string>
+    <string name="didnt_match_validation">Password doesn\'t match</string>
 </resources>
