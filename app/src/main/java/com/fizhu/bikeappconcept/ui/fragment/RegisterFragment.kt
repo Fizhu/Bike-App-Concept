@@ -54,18 +54,17 @@ class RegisterFragment : BaseFragment() {
     }
 
     override fun onInit() {
+        viewModel.getAllUsers()
         binding?.btnRegis?.isEnabled = false
         onClick()
         setImageProfile()
         initValidation()
         observe(viewModel.isUsernameExist) {
             if (it) {
-                loge("WOKEE")
                 isUsernameValid = true
                 binding?.tilUsername?.isHelperTextEnabled = false
                 checkvalid()
             } else {
-                loge("NOT WOKEE")
                 isUsernameValid = false
                 binding?.tilUsername?.isHelperTextEnabled = true
                 binding?.tilUsername?.helperText = getString(R.string.username_exist)

@@ -10,8 +10,10 @@ import io.reactivex.Observable
 interface Repository {
     val isLogin: Boolean
     fun getUserByUsernamePassword(username: String, password: String): Observable<User>
-    fun getUserByUsername(username: String): Observable<User>
+    fun getUserByUsername(username: String): Observable<List<User>>
     fun getUserById(id: Int): Observable<User>
     fun getIsLogin() : Boolean
     fun setIsLogin(isLogin: Boolean)
+    fun insertUser(user: User)
+    fun getAllUsers(): Observable<List<User>>
 }

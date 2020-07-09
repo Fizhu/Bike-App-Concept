@@ -17,8 +17,10 @@ open class AppRepository constructor(
 
     override val isLogin: Boolean = UserSession.keyIsLogin
     override fun getUserByUsernamePassword(username: String, password: String): Observable<User> = db.getUserByUsernamePassword(username, password)
-    override fun getUserByUsername(username: String): Observable<User> = db.getUserByUsername(username)
+    override fun getUserByUsername(username: String): Observable<List<User>> = db.getUserByUsername(username)
     override fun getUserById(id: Int): Observable<User> = db.getUserById(id)
     override fun getIsLogin(): Boolean = pref.getIsLogin()
     override fun setIsLogin(isLogin: Boolean) = pref.setIsLogin(isLogin)
+    override fun insertUser(user: User) = db.insert(user)
+    override fun getAllUsers(): Observable<List<User>> = db.getAllUsers
 }

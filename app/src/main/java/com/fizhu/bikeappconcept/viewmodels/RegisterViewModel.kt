@@ -2,10 +2,16 @@ package com.fizhu.bikeappconcept.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.fizhu.bikeappconcept.data.models.User
 import com.fizhu.bikeappconcept.data.repository.Repository
 import com.fizhu.bikeappconcept.utils.SingleLiveEvent
 import com.fizhu.bikeappconcept.utils.base.BaseViewModel
+import com.fizhu.bikeappconcept.utils.ext.loge
 import com.fizhu.bikeappconcept.utils.ext.route
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
 
 /**
  * Created by fizhu on 07,July,2020
@@ -14,7 +20,7 @@ import com.fizhu.bikeappconcept.utils.ext.route
 
 class RegisterViewModel(
     private val repository: Repository
-): BaseViewModel(){
+) : BaseViewModel() {
 
     val photo: MutableLiveData<String> = MutableLiveData()
     val fullname: MutableLiveData<String> = MutableLiveData()
@@ -25,10 +31,25 @@ class RegisterViewModel(
     val isUsernameExist: LiveData<Boolean>
         get() = _isUsernameExist
 
+    fun getAllUsers() {
+        compositeDisposable.route(repository.getAllUsers(),
+        io = {
+            val gson = GsonBuilder().setPrettyPrinting().create()
+            loge(gson.toJson(it))
+        },
+        error = {
+            loge("Error get all user !")
+        })
+    }
+
     fun checkUsername() {
-        compositeDisposable.route(repository.getUserByUsername(username.value?:""),
-            main = {
-                _isUsernameExist.postValue(true)
+        compositeDisposable.route(repository.getUserByUsername(username.value ?: ""),
+            io = {
+                if (it.isNotEmpty()) {
+                    _isUsernameExist.postValue(false)
+                } else {
+                    _isUsernameExist.postValue(true)
+                }
             },
             error = {
                 _isUsernameExist.postValue(true)
@@ -37,26 +58,15 @@ class RegisterViewModel(
     }
 
     fun submitRegister() {
-//        _networkstate.postValue(NetworkState.LOADING)
-//        compositeDisposable.route(
-//            repository.login(email.value!!, password.value!!),
-//            io = {
-//                if (it.status) {
-//                    if (it.data != null) {
-//                        repository.storeUserData(it.data)
-//                        _networkstate.postValue(NetworkState.SUCCESS)
-//                    } else {
-//                        _networkstate.postValue(NetworkState.NULL)
-//                    }
-//                } else {
-//                    _networkstate.postValue(NetworkState.FAILED)
-//                }
-//            },
-//            error = {
-//                loge(it.localizedMessage)
-//                _networkstate.postValue(NetworkState.ERROR)
-//            }
-//        )
+        repository.insertUser(
+            User(
+                id = null,
+                name = fullname.value,
+                username = username.value,
+                password = password.value,
+                photo = photo.value
+            )
+        )
     }
 
 }

@@ -13,6 +13,8 @@ open class LocalDataSource constructor(
     private val userDao: UserDao
 ) {
 
+    val getAllUsers = userDao.all
+
     fun insert(user: User) {
         doBack(
             action = {

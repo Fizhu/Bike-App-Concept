@@ -5,6 +5,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
+import com.fizhu.bikeappconcept.data.db.Db
 import com.fizhu.bikeappconcept.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -17,10 +18,14 @@ import timber.log.Timber
 
 class App : Application() {
 
+    lateinit var db: Db
+
     override fun onCreate() {
         super.onCreate()
         context = this
         singleton = this
+
+        db = Db.getInstance(this)
 
         Timber.plant(Timber.DebugTree())
 

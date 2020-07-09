@@ -25,7 +25,7 @@ interface UserDao {
     fun getUserByUsernamePassword(username: String, password: String): Observable<User>
 
     @Query("SELECT * FROM user_table WHERE username = :username")
-    fun getUserByUsername(username: String): Observable<User>
+    fun getUserByUsername(username: String): Observable<List<User>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(user: User)
