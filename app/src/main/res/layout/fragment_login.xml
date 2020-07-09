@@ -23,13 +23,13 @@
 
             <ImageView
                 android:id="@+id/iv_logo"
-                android:layout_width="266dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:layout_marginBottom="@dimen/margin_super"
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/undraw_biking_kc4f"
-                app:layout_constraintBottom_toTopOf="@+id/til_email"
+                app:layout_constraintBottom_toTopOf="@+id/til_username"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
@@ -38,9 +38,10 @@
                 app:layout_constraintWidth_percent="0.7" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_email"
+                android:id="@+id/til_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:helperTextTextColor="@color/md_red_200"
                 app:boxBackgroundColor="@color/colorPrimaryDark"
                 app:hintTextColor="@color/colorOnBackground"
                 app:layout_constraintBottom_toTopOf="@+id/til_pw"
@@ -50,7 +51,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/iv_logo">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_email"
+                    android:id="@+id/et_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/username"
@@ -65,13 +66,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_extra"
+                app:helperTextTextColor="@color/md_red_200"
                 app:hintTextColor="@color/colorOnBackground"
                 app:boxBackgroundColor="@color/colorPrimaryDark"
                 app:layout_constraintBottom_toTopOf="@+id/btn_login"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/til_email"
+                app:layout_constraintTop_toBottomOf="@+id/til_username"
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText

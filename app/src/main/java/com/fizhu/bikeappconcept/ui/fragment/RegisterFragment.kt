@@ -18,7 +18,6 @@ import com.esafirm.imagepicker.features.ReturnMode
 import com.fizhu.bikeappconcept.R
 import com.fizhu.bikeappconcept.databinding.FragmentRegisterBinding
 import com.fizhu.bikeappconcept.utils.base.BaseFragment
-import com.fizhu.bikeappconcept.utils.ext.loge
 import com.fizhu.bikeappconcept.utils.ext.observe
 import com.fizhu.bikeappconcept.utils.ext.toast
 import com.fizhu.bikeappconcept.viewmodels.RegisterViewModel

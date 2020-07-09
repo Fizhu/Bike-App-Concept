@@ -19,10 +19,10 @@ interface UserDao {
     val all: Observable<List<User>>
 
     @Query("SELECT * FROM user_table WHERE id = :id")
-    fun getUserById(id: Int): Observable<User>
+    fun getUserById(id: Int): Observable<List<User>>
 
     @Query("SELECT * FROM user_table WHERE username = :username AND password = :password")
-    fun getUserByUsernamePassword(username: String, password: String): Observable<User>
+    fun getUserByUsernamePassword(username: String, password: String): Observable<List<User>>
 
     @Query("SELECT * FROM user_table WHERE username = :username")
     fun getUserByUsername(username: String): Observable<List<User>>

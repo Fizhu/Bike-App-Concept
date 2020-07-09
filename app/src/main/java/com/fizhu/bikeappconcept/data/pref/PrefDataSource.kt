@@ -9,4 +9,8 @@ class PrefDataSource {
     fun setIsLogin(isLogin: Boolean) {
         UserSession.keyIsLogin = isLogin
     }
+    fun getId() : String? = UserSession.keyId
+    fun setId(id: String) {
+        UserSession.keyId = id
+    }
 }
