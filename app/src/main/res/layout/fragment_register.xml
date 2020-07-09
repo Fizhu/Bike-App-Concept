@@ -83,6 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_extra"
                 android:layout_marginEnd="@dimen/margin_extra"
+                app:endIconMode="custom"
                 app:helperTextTextColor="@color/md_red_200"
                 app:boxBackgroundColor="@color/colorPrimaryDark"
                 app:hintTextColor="@color/colorOnBackground"

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -61,13 +62,14 @@ class RegisterFragment : BaseFragment() {
         initValidation()
         observe(viewModel.isUsernameExist) {
             if (it) {
-                isUsernameValid = true
-                binding?.tilUsername?.isHelperTextEnabled = false
-                checkvalid()
-            } else {
                 isUsernameValid = false
                 binding?.tilUsername?.isHelperTextEnabled = true
                 binding?.tilUsername?.helperText = getString(R.string.username_exist)
+                checkvalid()
+            } else {
+                isUsernameValid = true
+                binding?.tilUsername?.isHelperTextEnabled = false
+                binding?.tilUsername?.endIconDrawable = ContextCompat.getDrawable(requireContext(), R.drawable.ic_baseline_check_24)
                 checkvalid()
             }
         }

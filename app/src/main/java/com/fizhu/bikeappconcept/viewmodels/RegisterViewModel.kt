@@ -46,9 +46,9 @@ class RegisterViewModel(
         compositeDisposable.route(repository.getUserByUsername(username.value ?: ""),
             io = {
                 if (it.isNotEmpty()) {
-                    _isUsernameExist.postValue(false)
-                } else {
                     _isUsernameExist.postValue(true)
+                } else {
+                    _isUsernameExist.postValue(false)
                 }
             },
             error = {
