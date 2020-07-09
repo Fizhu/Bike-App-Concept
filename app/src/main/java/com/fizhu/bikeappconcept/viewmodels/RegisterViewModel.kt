@@ -31,6 +31,10 @@ class RegisterViewModel(
     val isUsernameExist: LiveData<Boolean>
         get() = _isUsernameExist
 
+    private val _isRegitered = SingleLiveEvent<Boolean>()
+    val isRegitered: LiveData<Boolean>
+        get() = _isRegitered
+
     fun getAllUsers() {
         compositeDisposable.route(repository.getAllUsers(),
         io = {
@@ -64,9 +68,10 @@ class RegisterViewModel(
                 name = fullname.value,
                 username = username.value,
                 password = password.value,
-                photo = photo.value
+                photo = photo.value?:""
             )
         )
+        _isRegitered.postValue(true)
     }
 
 }

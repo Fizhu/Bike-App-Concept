@@ -1,5 +1,7 @@
 package com.fizhu.bikeappconcept.ui.fragment
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,11 +13,14 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
+import com.esafirm.imagepicker.features.ImagePicker
+import com.esafirm.imagepicker.features.ReturnMode
 import com.fizhu.bikeappconcept.R
 import com.fizhu.bikeappconcept.databinding.FragmentRegisterBinding
 import com.fizhu.bikeappconcept.utils.base.BaseFragment
 import com.fizhu.bikeappconcept.utils.ext.loge
 import com.fizhu.bikeappconcept.utils.ext.observe
+import com.fizhu.bikeappconcept.utils.ext.toast
 import com.fizhu.bikeappconcept.viewmodels.RegisterViewModel
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -24,6 +29,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.io.File
 import java.util.concurrent.TimeUnit
 
 /**
@@ -73,6 +79,39 @@ class RegisterFragment : BaseFragment() {
                 checkvalid()
             }
         }
+
+        binding?.ivProfile?.setOnClickListener {
+            ImagePicker
+                .create(this)
+                .single()
+                .returnMode(ReturnMode.CAMERA_ONLY)
+                .theme(R.style.ImagePickerTheme)
+                .folderMode(true)
+                .enableLog(false)
+                .start()
+        }
+
+        observe(viewModel.isRegitered) {
+            if (it) {
+                requireContext().toast("You've been registered, try to login !")
+                findNavController().navigateUp()
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (ImagePicker.shouldHandle(requestCode, resultCode, data)) {
+            val image = ImagePicker.getFirstImageOrNull(data)
+            val file = File(image.path)
+            val uri = Uri.fromFile(file).toString()
+            viewModel.photo.value = uri
+            Glide.with(this)
+                .load(Uri.parse(uri))
+                .error(R.drawable.default_image_profile)
+                .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(16)))
+                .into(binding?.ivProfile!!)
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
     private fun initValidation() {
