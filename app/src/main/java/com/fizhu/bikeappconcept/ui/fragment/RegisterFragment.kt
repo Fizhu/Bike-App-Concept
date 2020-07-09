@@ -13,6 +13,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.fizhu.bikeappconcept.R
 import com.fizhu.bikeappconcept.databinding.FragmentRegisterBinding
 import com.fizhu.bikeappconcept.utils.base.BaseFragment
+import com.fizhu.bikeappconcept.utils.ext.loge
 import com.fizhu.bikeappconcept.utils.ext.observe
 import com.fizhu.bikeappconcept.viewmodels.RegisterViewModel
 import com.google.android.material.textfield.TextInputEditText
@@ -59,10 +60,12 @@ class RegisterFragment : BaseFragment() {
         initValidation()
         observe(viewModel.isUsernameExist) {
             if (it) {
+                loge("WOKEE")
                 isUsernameValid = true
                 binding?.tilUsername?.isHelperTextEnabled = false
                 checkvalid()
             } else {
+                loge("NOT WOKEE")
                 isUsernameValid = false
                 binding?.tilUsername?.isHelperTextEnabled = true
                 binding?.tilUsername?.helperText = getString(R.string.username_exist)

@@ -43,7 +43,6 @@
                 android:layout_height="wrap_content"
                 app:boxBackgroundColor="@color/colorPrimaryDark"
                 app:hintTextColor="@color/colorOnBackground"
-                android:layout_marginBottom="@dimen/margin"
                 app:layout_constraintBottom_toTopOf="@+id/til_pw"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
