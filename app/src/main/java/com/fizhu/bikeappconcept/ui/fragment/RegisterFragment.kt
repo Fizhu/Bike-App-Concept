@@ -61,7 +61,6 @@ class RegisterFragment : BaseFragment() {
     }
 
     override fun onInit() {
-        viewModel.getAllUsers()
         binding?.btnRegis?.isEnabled = false
         onClick()
         setImageProfile()

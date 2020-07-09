@@ -35,17 +35,6 @@ class RegisterViewModel(
     val isRegitered: LiveData<Boolean>
         get() = _isRegitered
 
-    fun getAllUsers() {
-        compositeDisposable.route(repository.getAllUsers(),
-        io = {
-            val gson = GsonBuilder().setPrettyPrinting().create()
-            loge(gson.toJson(it))
-        },
-        error = {
-            loge("Error get all user !")
-        })
-    }
-
     fun checkUsername() {
         compositeDisposable.route(repository.getUserByUsername(username.value ?: ""),
             io = {
