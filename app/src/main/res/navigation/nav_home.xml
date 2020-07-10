@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_home"
+    app:startDestination="@id/menu_home">
+
+    <fragment
+        android:id="@+id/menu_home"
+        android:name="com.fizhu.bikeappconcept.ui.fragment.HomeFragment"
+        tools:layout="@layout/fragment_home"
+        android:label="HomeFragment" >
+    </fragment>
+    <fragment
+        android:id="@+id/menu_favorite"
+        android:name="com.fizhu.bikeappconcept.ui.fragment.FavoriteFragment"
+        tools:layout="@layout/fragment_favorite"
+        android:label="FavoriteFragment" >
+    </fragment>
+    <fragment
+        android:id="@+id/menu_about"
+        android:name="com.fizhu.bikeappconcept.ui.fragment.AboutFragment"
+        tools:layout="@layout/fragment_about"
+        android:label="AboutFragment" >
+    </fragment>
+    <fragment
+        android:id="@+id/menu_account"
+        android:name="com.fizhu.bikeappconcept.ui.fragment.AccountFragment"
+        tools:layout="@layout/fragment_account"
+        android:label="AccountFragment" />
+</navigation>

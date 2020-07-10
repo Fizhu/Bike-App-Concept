@@ -11,17 +11,13 @@
         <item name="android:colorBackground">@color/colorPrimaryDark</item>
     </style>
 
-<!--    <style name="Theme.Sunflower" parent="Base.Theme.Sunflower"/>-->
-
-<!--    <style name="Theme.Sunflower.NoActionBar">-->
-<!--        <item name="windowActionBar">false</item>-->
-<!--        <item name="windowNoTitle">true</item>-->
+<!--    <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">-->
+<!--        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>-->
 <!--    </style>-->
 
-<!--    <style name="Theme.Sunflower.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar"/>-->
-
-<!--    <style name="TextAppearance.Sunflower.Toolbar.Text" parent="TextAppearance.MaterialComponents.Headline5" >-->
-<!--        <item name="android:textColor">?attr/colorOnSurface</item>-->
+<!--    <style name="ThemeOverlay.App.BottomNavigationView" parent="">-->
+<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
+<!--        <item name="colorOnPrimary">@color/colorAccent</item>-->
 <!--    </style>-->
 
     <style name="ImagePickerTheme" parent="ef_BaseTheme">

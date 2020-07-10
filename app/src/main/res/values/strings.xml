@@ -15,4 +15,8 @@
     <string name="invalid_validation">Format invalid or too short</string>
     <string name="username_exist">Username has been taken</string>
     <string name="didnt_match_validation">Password doesn\'t match</string>
+    <string name="home">Home</string>
+    <string name="favourite">Favourite</string>
+    <string name="about">About</string>
+    <string name="account">Accout</string>
 </resources>
