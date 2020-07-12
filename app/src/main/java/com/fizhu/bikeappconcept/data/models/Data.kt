@@ -1,10 +1,12 @@
 package com.fizhu.bikeappconcept.data.models
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
 /**
  * Created by fizhu on 06,July,2020
@@ -27,7 +29,11 @@ data class User(
     val photo: String? = null
 )
 
+@Entity(tableName = "bike_table")
+@Parcelize
 data class Bike(
+    @PrimaryKey(autoGenerate = false)
+    @ColumnInfo(name = "id")
     @Expose @SerializedName("id")
     val id: Int? = 0,
     @Expose @SerializedName("name")
@@ -40,4 +46,4 @@ data class Bike(
     val desc: String? = null,
     @Expose @SerializedName("price")
     val price: String? = null
-)
+): Parcelable
