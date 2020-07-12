@@ -26,3 +26,18 @@ data class User(
     @Expose @SerializedName("photo")
     val photo: String? = null
 )
+
+data class Bike(
+    @Expose @SerializedName("id")
+    val id: Int? = 0,
+    @Expose @SerializedName("name")
+    val name: String? = null,
+    @Expose @SerializedName("type")
+    val type: Int? = null,
+    @Expose @SerializedName("image")
+    val image: String? = null,
+    @Expose @SerializedName("desc")
+    val desc: String? = null,
+    @Expose @SerializedName("price")
+    val price: String? = null
+)
