@@ -9,6 +9,7 @@
     <color name="grey_soft">#5C5C61</color>
     <color name="grey_dark">#47484B</color>
     <color name="yellow_soft">#FFE284</color>
+    <color name="text_big">#696B71</color>
 
     <!--reds-->
     <color name="md_red_50">#FFEBEE</color>

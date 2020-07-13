@@ -4,26 +4,96 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.fizhu.bikeappconcept.viewmodels.HomeViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <TextView
-            style="@style/muliExtraBoldExtraLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Home"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tv_app_title"
+                style="@style/muliBoldExtraLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin"
+                android:text="@string/bike_app"
+                android:textColor="@color/md_white_1000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_app_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/just_a_simple_bike_app"
+                app:layout_constraintStart_toStartOf="@+id/tv_app_title"
+                app:layout_constraintTop_toBottomOf="@+id/tv_app_title" />
+
+            <ImageView
+                android:id="@+id/iv_profile"
+                profileImage="@{viewModel.userData.photo}"
+                android:layout_width="@dimen/offset"
+                android:layout_height="@dimen/offset"
+                android:layout_marginEnd="@dimen/margin"
+                android:contentDescription="@string/app_name"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_app_subtitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_app_title" />
+
+            <LinearLayout
+                android:id="@+id/ly_bike_tab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/margin_super"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_app_subtitle">
+
+                <com.fizhu.bikeappconcept.utils.VerticalTextView
+                    style="@style/muliBoldLarge"
+                    app:direction="downtoup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/roadbike" />
+
+            </LinearLayout>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vp_bike"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:layout_marginStart="@dimen/margin"
+                app:layout_constraintBottom_toBottomOf="@+id/ly_bike_tab"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ly_bike_tab"
+                app:layout_constraintTop_toTopOf="@+id/ly_bike_tab" />
+
+            <ImageView
+                android:id="@+id/iv_selected_bike"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/road_bike"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                android:layout_marginTop="@dimen/margin_super"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ly_bike_tab" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </layout>

@@ -37,6 +37,11 @@ class HomeFragment: BaseFragment() {
     }
 
     override fun onInit() {
+        viewModel.getUserData()
+    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        compositeDisposable.clear()
     }
 }

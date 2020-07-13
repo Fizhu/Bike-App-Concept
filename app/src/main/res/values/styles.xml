@@ -9,6 +9,7 @@
         <item name="colorSurface">@color/colorPrimary</item>
         <item name="colorSecondary">@color/colorPrimaryDark</item>
         <item name="android:colorBackground">@color/colorPrimaryDark</item>
+        <item name="android:fontFamily">@font/muli_regular</item>
     </style>
 
 <!--    <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">-->

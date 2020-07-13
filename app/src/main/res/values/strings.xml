@@ -19,4 +19,8 @@
     <string name="favourite">Favourite</string>
     <string name="about">About</string>
     <string name="account">Accout</string>
+    <string name="bike_app">Bike App</string>
+    <string name="just_a_simple_bike_app">Just a simple bike app</string>
+    <string name="roadbike">Roadbike</string>
+    <string name="mountain_bike">Mountain Bike</string>
 </resources>
