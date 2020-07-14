@@ -101,13 +101,13 @@
                 app:layout_constraintStart_toEndOf="@+id/ly_bike_tab"
                 app:layout_constraintTop_toTopOf="@+id/ly_bike_tab" />
 
-            <ImageView
-                android:id="@+id/iv_selected_bike"
-                android:layout_width="wrap_content"
-                android:layout_height="70dp"
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vp_selected_bike"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_more_extra"
+                android:layoutDirection="rtl"
                 android:adjustViewBounds="true"
-                android:contentDescription="@string/app_name"
                 android:scaleType="centerCrop"
                 android:src="@drawable/road_bike"
                 app:layout_constraintEnd_toEndOf="parent"

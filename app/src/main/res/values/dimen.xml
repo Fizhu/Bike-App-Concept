@@ -12,8 +12,8 @@
 
     <dimen name="default_height">54dp</dimen>
 
-    <dimen name="pageMargin">10dp</dimen>
-    <dimen name="offset">50dp</dimen>
+    <dimen name="pageMargin">8dp</dimen>
+    <dimen name="offset">48dp</dimen>
     <dimen name="pageMarginAndOffset">80dp</dimen>
 
 </resources>

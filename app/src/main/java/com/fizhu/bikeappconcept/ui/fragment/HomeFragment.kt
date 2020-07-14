@@ -1,23 +1,27 @@
 package com.fizhu.bikeappconcept.ui.fragment
 
+import android.annotation.SuppressLint
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
+import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.fizhu.bikeappconcept.R
+import com.fizhu.bikeappconcept.adapters.BikeSelectedAdapter
 import com.fizhu.bikeappconcept.adapters.BikeTypeAdapter
 import com.fizhu.bikeappconcept.databinding.FragmentHomeBinding
-import com.fizhu.bikeappconcept.utils.ViewPager2PageTransformation
+import com.fizhu.bikeappconcept.utils.VerticalTextView
 import com.fizhu.bikeappconcept.utils.base.BaseFragment
 import com.fizhu.bikeappconcept.utils.ext.toast
 import com.fizhu.bikeappconcept.viewmodels.HomeViewModel
 import io.reactivex.disposables.CompositeDisposable
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.util.*
 import kotlin.math.abs
 
 /**
@@ -50,6 +54,16 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun initViewPager() {
+        val adapterSelected =
+            BikeSelectedAdapter(requireContext())
+        with(binding?.vpSelectedBike!!) {
+            clipToPadding = false
+            clipChildren = false
+            offscreenPageLimit = 3
+            adapter = adapterSelected
+        }
+        binding?.vpSelectedBike?.isUserInputEnabled = false
+
         val adapterType =
             BikeTypeAdapter(requireContext()) {
                 requireContext().toast("Boo")
@@ -59,30 +73,64 @@ class HomeFragment : BaseFragment() {
             clipChildren = false
             offscreenPageLimit = 3
             adapter = adapterType
+
+            val pageMarginPx = resources.getDimensionPixelOffset(R.dimen.pageMargin)
+            val offsetPx = resources.getDimensionPixelOffset(R.dimen.offset)
+            setPageTransformer { page, position ->
+                val viewPager = page.parent.parent as ViewPager2
+                val offset = position * -(2 * offsetPx + pageMarginPx)
+                if (viewPager.orientation == ViewPager2.ORIENTATION_HORIZONTAL) {
+                    if (ViewCompat.getLayoutDirection(viewPager) == ViewCompat.LAYOUT_DIRECTION_RTL) {
+                        page.translationX = -offset
+                    } else {
+                        page.translationX = offset
+                    }
+                } else {
+                    page.translationY = offset
+                }
+                page.apply {
+                    translationY = abs(position) * 50f
+                    scaleX = 1f
+                    scaleY = 1f
+                }
+            }
         }
         adapterType.notifyDataSetChanged()
 
-        val pageMarginPx = resources.getDimensionPixelOffset(R.dimen.pageMargin)
-        val offsetPx = resources.getDimensionPixelOffset(R.dimen.offset)
-        binding?.vpBike?.setPageTransformer { page, position ->
-            val viewPager = page.parent.parent as ViewPager2
-            val offset = position * -(2 * offsetPx + pageMarginPx)
-            if (viewPager.orientation == ViewPager2.ORIENTATION_HORIZONTAL) {
-                if (ViewCompat.getLayoutDirection(viewPager) == ViewCompat.LAYOUT_DIRECTION_RTL) {
-                    page.translationX = -offset
-                } else {
-                    page.translationX = offset
+        val listTab: List<VerticalTextView?> = listOf(
+            binding?.tvRoadbike,
+            binding?.tvMtb,
+            binding?.tvBmx
+        )
+
+        binding?.vpBike?.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                binding?.vpSelectedBike?.setCurrentItem(position, true)
+                listTab.forEachIndexed { index, verticalTextView ->
+                    if (position == index) {
+                        setTabColor(verticalTextView, true)
+                    } else {
+                        setTabColor(verticalTextView, false)
+                    }
                 }
-            } else {
-                page.translationY = offset
             }
-            page.apply {
-                translationY = abs(position) * 50f
-                scaleX = 1f
-                scaleY = 1f
+
+        })
+
+        listTab.forEachIndexed { index, verticalTextView ->
+            verticalTextView?.setOnClickListener {
+                binding?.vpBike?.setCurrentItem(index, true)
             }
         }
+    }
 
+    private fun setTabColor(tv: VerticalTextView?, isSelected: Boolean) {
+        if (isSelected) {
+            tv?.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorPrimary))
+        } else {
+            tv?.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorOnBackground))
+        }
     }
 
     override fun onDestroyView() {
