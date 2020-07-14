@@ -1,16 +1,12 @@
 package com.fizhu.bikeappconcept.ui.fragment
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.fizhu.bikeappconcept.R
 import com.fizhu.bikeappconcept.adapters.BikeSelectedAdapter
@@ -32,9 +28,6 @@ class HomeFragment : BaseFragment() {
 
     private val viewModel by viewModel<HomeViewModel>()
     private var binding: FragmentHomeBinding? = null
-    private val compositeDisposable by lazy {
-        CompositeDisposable()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -131,10 +124,5 @@ class HomeFragment : BaseFragment() {
         } else {
             tv?.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorOnBackground))
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        compositeDisposable.clear()
     }
 }

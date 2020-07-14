@@ -26,6 +26,7 @@ class HomeActivity: BaseActivity() {
                         it
                     )
                 }
+            bottomNav.setOnNavigationItemReselectedListener { }
         }
     }
 }

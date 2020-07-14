@@ -65,8 +65,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/half_padding"
-                    android:textColor="@color/colorPrimary"
                     android:text="@string/roadbike"
+                    android:textColor="@color/colorPrimary"
                     app:direction="downtoup" />
 
                 <com.fizhu.bikeappconcept.utils.VerticalTextView
@@ -106,8 +106,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_more_extra"
-                android:layoutDirection="rtl"
                 android:adjustViewBounds="true"
+                android:layoutDirection="rtl"
                 android:scaleType="centerCrop"
                 android:src="@drawable/road_bike"
                 app:layout_constraintEnd_toEndOf="parent"

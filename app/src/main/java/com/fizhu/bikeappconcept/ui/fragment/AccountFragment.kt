@@ -20,9 +20,6 @@ class AccountFragment : BaseFragment() {
 
     private val viewModel by viewModel<AccountViewModel>()
     private var binding: FragmentAccountBinding? = null
-    private val compositeDisposable by lazy {
-        CompositeDisposable()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
