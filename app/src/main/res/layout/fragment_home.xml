@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -55,24 +54,47 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin_more_extra"
                 android:orientation="vertical"
-                android:layout_marginTop="@dimen/margin_super"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_app_subtitle">
 
                 <com.fizhu.bikeappconcept.utils.VerticalTextView
+                    android:id="@+id/tv_roadbike"
                     style="@style/muliBoldLarge"
-                    app:direction="downtoup"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/roadbike" />
+                    android:padding="@dimen/half_padding"
+                    android:textColor="@color/colorPrimary"
+                    android:text="@string/roadbike"
+                    app:direction="downtoup" />
+
+                <com.fizhu.bikeappconcept.utils.VerticalTextView
+                    android:id="@+id/tv_mtb"
+                    style="@style/muliBoldLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding"
+                    android:padding="@dimen/half_padding"
+                    android:text="@string/mountain_bike"
+                    app:direction="downtoup" />
+
+                <com.fizhu.bikeappconcept.utils.VerticalTextView
+                    android:id="@+id/tv_bmx"
+                    style="@style/muliBoldLarge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/padding"
+                    android:padding="@dimen/half_padding"
+                    android:text="@string/trick_bike"
+                    app:direction="downtoup" />
 
             </LinearLayout>
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/vp_bike"
                 android:layout_width="0dp"
-                android:layout_height="200dp"
+                android:layout_height="300dp"
                 android:layout_marginStart="@dimen/margin"
                 app:layout_constraintBottom_toBottomOf="@+id/ly_bike_tab"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -83,11 +105,11 @@
                 android:id="@+id/iv_selected_bike"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/road_bike"
-                android:scaleType="centerCrop"
+                android:layout_marginTop="@dimen/margin_more_extra"
                 android:adjustViewBounds="true"
-                android:layout_marginTop="@dimen/margin_super"
+                android:contentDescription="@string/app_name"
+                android:scaleType="centerCrop"
+                android:src="@drawable/road_bike"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ly_bike_tab" />

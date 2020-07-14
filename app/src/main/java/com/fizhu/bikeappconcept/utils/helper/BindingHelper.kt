@@ -21,8 +21,8 @@ object BindingHelper {
     fun loadImageProfile(view: ImageView, imageUrl: String?) {
         Glide.with(view.context)
             .load(Uri.parse(imageUrl?:""))
-            .placeholder(R.drawable.default_image_profile)
-            .error(R.drawable.default_image_profile)
+            .placeholder(R.drawable.default_user)
+            .error(R.drawable.default_user)
             .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(16)))
             .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
             .into(view)
