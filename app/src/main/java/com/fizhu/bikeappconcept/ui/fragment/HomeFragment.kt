@@ -51,7 +51,7 @@ class HomeFragment : BaseFragment() {
 
     private fun initViewPager() {
         val adapterType =
-            BikeTypeAdapter(null, requireContext()) {
+            BikeTypeAdapter(requireContext()) {
                 requireContext().toast("Boo")
             }
         with(binding?.vpBike!!) {
