@@ -56,8 +56,7 @@ class BikeTypeAdapter(
     private fun setImage(url: String, iv: ImageView) {
         Glide.with(context)
             .asBitmap()
-            .load(url)
-            .override(1600, 900)
+            .load(context.resources.getIdentifier(url, "drawable", context.packageName))
             .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
             .into(iv)
     }

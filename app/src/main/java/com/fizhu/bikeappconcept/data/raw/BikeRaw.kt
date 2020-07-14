@@ -9,12 +9,16 @@ import com.fizhu.bikeappconcept.data.models.Bike
  * https://github.com/Fizhu
  */
 object BikeRaw {
-    val imgRoadbike =
-        "https://raw.githubusercontent.com/Fizhu/Bike-App-Concept/master/images/roadbike.png"
-    val imgMtb =
-        "https://raw.githubusercontent.com/Fizhu/Bike-App-Concept/master/images/mtb.png"
-    val imgBmx =
-    "https://raw.githubusercontent.com/Fizhu/Bike-App-Concept/master/images/bmx2.png"
+//    val imgRoadbike =
+//        "https://raw.githubusercontent.com/Fizhu/Bike-App-Concept/master/images/roadbike.png"
+//    val imgMtb =
+//        "https://raw.githubusercontent.com/Fizhu/Bike-App-Concept/master/images/mtb.png"
+//    val imgBmx =
+//    "https://raw.githubusercontent.com/Fizhu/Bike-App-Concept/master/images/bmx2.png"
+
+    val imgRoadbike = "img_roadbike"
+    val imgMtb = "img_mtb"
+    val imgBmx = "img_bmx"
 
     val listRoadBike: List<Bike> = arrayListOf(
         Bike(
