@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
+        style="@style/clickableBorder"
         android:id="@+id/cardView"
         android:layout_width="200dp"
         android:layout_height="250dp"

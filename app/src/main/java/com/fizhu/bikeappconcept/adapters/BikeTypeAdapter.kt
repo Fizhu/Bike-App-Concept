@@ -49,7 +49,7 @@ class BikeTypeAdapter(
                     tvType.text = this.root.context.getString(R.string.trick_bike)
                 }
             }
-            root.setOnClickListener { callBack.invoke(data) }
+            cardView.setOnClickListener { callBack.invoke(data) }
         }
     }
 

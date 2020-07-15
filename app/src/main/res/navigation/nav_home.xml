@@ -3,29 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_home"
-    app:startDestination="@id/menu_home">
+    app:startDestination="@id/mainFragment">
 
     <fragment
-        android:id="@+id/menu_home"
-        android:name="com.fizhu.bikeappconcept.ui.fragment.HomeFragment"
-        tools:layout="@layout/fragment_home"
-        android:label="HomeFragment" >
-    </fragment>
+        android:id="@+id/settingFragment"
+        android:name="com.fizhu.bikeappconcept.ui.fragment.SettingFragment"
+        android:label="SettingFragment"
+        tools:layout="@layout/fragment_setting" />
     <fragment
-        android:id="@+id/menu_favorite"
-        android:name="com.fizhu.bikeappconcept.ui.fragment.FavoriteFragment"
-        tools:layout="@layout/fragment_favorite"
-        android:label="FavoriteFragment" >
+        android:id="@+id/mainFragment"
+        android:name="com.fizhu.bikeappconcept.ui.fragment.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_settingFragment"
+            app:destination="@id/settingFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
-    <fragment
-        android:id="@+id/menu_about"
-        android:name="com.fizhu.bikeappconcept.ui.fragment.AboutFragment"
-        tools:layout="@layout/fragment_about"
-        android:label="AboutFragment" >
-    </fragment>
-    <fragment
-        android:id="@+id/menu_account"
-        android:name="com.fizhu.bikeappconcept.ui.fragment.AccountFragment"
-        tools:layout="@layout/fragment_account"
-        android:label="AccountFragment" />
+
 </navigation>

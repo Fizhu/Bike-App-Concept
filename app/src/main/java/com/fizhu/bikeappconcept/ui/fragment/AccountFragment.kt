@@ -1,15 +1,16 @@
 package com.fizhu.bikeappconcept.ui.fragment
 
+import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.fizhu.bikeappconcept.R
 import com.fizhu.bikeappconcept.databinding.FragmentAccountBinding
 import com.fizhu.bikeappconcept.utils.base.BaseFragment
 import com.fizhu.bikeappconcept.viewmodels.AccountViewModel
-import io.reactivex.disposables.CompositeDisposable
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
@@ -30,10 +31,23 @@ class AccountFragment : BaseFragment() {
             inflater, R.layout.fragment_account, container, false
         )
         binding?.viewModel = this.viewModel
+        binding?.lifecycleOwner = this
         return binding?.root
     }
 
     override fun onInit() {
-
+        binding?.tvTitleAbout?.paintFlags =
+            binding?.tvTitleAbout!!.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+        binding?.tvLastest?.paintFlags =
+            binding?.tvTitleAbout!!.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+        binding?.toolbar?.setOnMenuItemClickListener {
+            if (it.itemId == R.id.setting) {
+                parentFragment?.parentFragment?.findNavController()
+                    ?.navigate(R.id.action_mainFragment_to_settingFragment)
+                return@setOnMenuItemClickListener true
+            } else {
+                return@setOnMenuItemClickListener false
+            }
+        }
     }
 }
