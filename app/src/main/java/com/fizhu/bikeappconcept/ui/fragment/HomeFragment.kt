@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.fizhu.bikeappconcept.R
 import com.fizhu.bikeappconcept.adapters.BikeSelectedAdapter
@@ -14,7 +17,6 @@ import com.fizhu.bikeappconcept.adapters.BikeTypeAdapter
 import com.fizhu.bikeappconcept.databinding.FragmentHomeBinding
 import com.fizhu.bikeappconcept.utils.VerticalTextView
 import com.fizhu.bikeappconcept.utils.base.BaseFragment
-import com.fizhu.bikeappconcept.utils.ext.toast
 import com.fizhu.bikeappconcept.viewmodels.HomeViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.abs
@@ -59,7 +61,8 @@ class HomeFragment : BaseFragment() {
 
         val adapterType =
             BikeTypeAdapter(requireContext()) {
-                requireContext().toast("Boo")
+                parentFragment?.parentFragment?.findNavController()
+                    ?.navigate(MainFragmentDirections.actionMainFragmentToListFragment(it))
             }
         with(binding?.vpBike!!) {
             clipToPadding = false
