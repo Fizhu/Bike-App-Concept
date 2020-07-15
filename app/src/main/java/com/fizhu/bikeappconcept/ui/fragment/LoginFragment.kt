@@ -57,7 +57,6 @@ class LoginFragment : BaseFragment() {
         initValidation()
         observe(viewModel.isLoggedIn) {
             if (it) {
-                requireContext().toast("Login success")
                 (activity as AuthActivity).initHome()
             } else {
                 requireContext().toast("Login failed, username or password invalid")

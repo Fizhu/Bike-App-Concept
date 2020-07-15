@@ -28,4 +28,7 @@
     <string name="fizhu">Fizhu</string>
     <string name="fizhu_small">\@fizhu</string>
     <string name="lastest">Lastest Favourite Bike</string>
+    <string name="edit">Edit Profile</string>
+    <string name="change">Change Password</string>
+    <string name="logout">Logout</string>
 </resources>

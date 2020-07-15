@@ -1,6 +1,8 @@
 package com.fizhu.bikeappconcept.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
+import com.fizhu.bikeappconcept.data.pref.UserSession
 import com.fizhu.bikeappconcept.databinding.ActivityHomeBinding
 import com.fizhu.bikeappconcept.utils.base.BaseActivity
 
@@ -16,5 +18,11 @@ class HomeActivity: BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
+
+    fun logout() {
+        UserSession.clearSession()
+        startActivity(Intent(this, AuthActivity::class.java))
+        finish()
     }
 }

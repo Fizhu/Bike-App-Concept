@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.fizhu.bikeappconcept.adapters.SettingAdapter
 import com.fizhu.bikeappconcept.databinding.FragmentSettingBinding
+import com.fizhu.bikeappconcept.ui.activity.HomeActivity
 import com.fizhu.bikeappconcept.utils.base.BaseFragment
 
 /**
@@ -15,6 +18,7 @@ import com.fizhu.bikeappconcept.utils.base.BaseFragment
 class SettingFragment : BaseFragment() {
 
     private var binding: FragmentSettingBinding? = null
+    private lateinit var adapter: SettingAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,5 +31,20 @@ class SettingFragment : BaseFragment() {
 
     override fun onInit() {
         binding?.toolbar?.setNavigationOnClickListener { findNavController().navigateUp() }
+        initRv()
+    }
+
+    private fun initRv() {
+        binding?.rv?.layoutManager = LinearLayoutManager(requireContext())
+        binding?.rv?.setHasFixedSize(true)
+        adapter = SettingAdapter(requireContext()) {
+            when (it) {
+                0 -> {  }
+                1 -> {  }
+                2 -> {(activity as HomeActivity).logout()}
+            }
+        }
+        adapter.notifyDataSetChanged()
+        binding?.rv?.adapter = adapter
     }
 }

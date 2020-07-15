@@ -73,7 +73,6 @@ class AccountFragment : BaseFragment() {
         observe(viewModel.isSuccess) {
             if (it) {
                 viewModel.getUserData()
-                requireActivity().toast("Update photo success")
             } else {
                 requireActivity().toast("Update photo failed")
             }
