@@ -16,7 +16,6 @@ import com.fizhu.bikeappconcept.utils.VerticalTextView
 import com.fizhu.bikeappconcept.utils.base.BaseFragment
 import com.fizhu.bikeappconcept.utils.ext.toast
 import com.fizhu.bikeappconcept.viewmodels.HomeViewModel
-import io.reactivex.disposables.CompositeDisposable
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.abs
 
@@ -38,11 +37,12 @@ class HomeFragment : BaseFragment() {
             inflater, R.layout.fragment_home, container, false
         )
         binding?.viewModel = this.viewModel
+        binding?.lifecycleOwner = this
         return binding?.root
     }
 
     override fun onInit() {
-        viewModel.getUserData()
+        binding?.ivProfile?.setOnClickListener { (parentFragment?.parentFragment as MainFragment).gotToProfile() }
         initViewPager()
     }
 

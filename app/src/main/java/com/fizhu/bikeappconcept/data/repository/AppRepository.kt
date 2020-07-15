@@ -23,4 +23,5 @@ open class AppRepository constructor(
     override fun getAllUsers(): Observable<List<User>> = db.getAllUsers
     override fun getId(): String? = pref.getId()
     override fun setId(id: String) = pref.setId(id)
+    override fun updatePhoto(id: Int, photo: String) = db.updatePhoto(id, photo)
 }

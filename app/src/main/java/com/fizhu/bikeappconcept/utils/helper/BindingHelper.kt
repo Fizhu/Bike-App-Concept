@@ -24,7 +24,7 @@ object BindingHelper {
             .placeholder(R.drawable.default_user)
             .error(R.drawable.default_user)
             .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(16)))
-            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
             .into(view)
     }
 }

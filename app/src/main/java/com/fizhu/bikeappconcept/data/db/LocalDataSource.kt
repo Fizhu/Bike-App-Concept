@@ -31,4 +31,6 @@ open class LocalDataSource constructor(
 
     fun getUserById(id: Int) = userDao.getUserById(id)
 
+    fun updatePhoto(id: Int, photo: String) = userDao.updatePhoto(id, photo)
+
 }

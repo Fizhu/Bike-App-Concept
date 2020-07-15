@@ -14,12 +14,16 @@ import com.fizhu.bikeappconcept.utils.ext.route
 
 class HomeViewModel(
     private val repository: Repository
-): BaseViewModel(){
+) : BaseViewModel() {
 
     val userData: MutableLiveData<User> = MutableLiveData()
 
-    fun getUserData() {
-        compositeDisposable.route(repository.getUserById(repository.getId()?.toInt()?:0),
+    init {
+        getUserData()
+    }
+
+    private fun getUserData() {
+        compositeDisposable.route(repository.getUserById(repository.getId()?.toInt() ?: 0),
             io = {
                 if (it.isNotEmpty()) {
                     userData.postValue(it[0])

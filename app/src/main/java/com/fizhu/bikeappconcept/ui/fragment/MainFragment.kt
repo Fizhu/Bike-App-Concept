@@ -37,4 +37,8 @@ class MainFragment : BaseFragment() {
             }
         binding?.bottomNav?.setOnNavigationItemReselectedListener { }
     }
+
+    fun gotToProfile() {
+        binding?.bottomNav?.selectedItemId = R.id.menu_account
+    }
 }

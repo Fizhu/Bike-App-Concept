@@ -17,4 +17,5 @@ interface Repository {
     fun getAllUsers(): Observable<List<User>>
     fun getId(): String?
     fun setId(id: String)
+    fun updatePhoto(id: Int, photo: String)
 }

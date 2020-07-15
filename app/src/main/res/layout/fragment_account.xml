@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.fizhu.bikeappconcept.viewmodels.AccountViewModel" />
@@ -14,16 +15,16 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.Toolbar
-            style="@style/muliBoldLarge"
             android:id="@+id/toolbar"
-            app:titleTextAppearance="@style/muliBoldLarge"
+            style="@style/muliBoldLarge"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:menu="@menu/menu_account"
-            app:title="@string/account" />
+            app:title="@string/account"
+            app:titleTextAppearance="@style/muliBoldLarge" />
 
         <ImageView
             android:id="@+id/iv_profile"
@@ -34,6 +35,17 @@
             android:contentDescription="@string/app_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_cam"
+            style="@style/clickableBackgroudBorderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/padding"
+            android:src="@drawable/ic_cam"
+            android:contentDescription="@string/app_name"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
+            app:layout_constraintEnd_toEndOf="@+id/iv_profile" />
 
         <TextView
             android:id="@+id/tv_fullname"
@@ -74,10 +86,10 @@
             style="@style/muliBoldSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/about"
-            android:textColor="@color/md_white_1000"
             android:layout_marginStart="@dimen/margin"
             android:layout_marginTop="@dimen/margin_extra"
+            android:text="@string/about"
+            android:textColor="@color/md_white_1000"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_profile" />
 
@@ -85,10 +97,10 @@
             android:id="@+id/tv_about"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/lorem"
             android:layout_marginStart="@dimen/margin"
-            android:layout_marginEnd="@dimen/margin"
             android:layout_marginTop="@dimen/padding"
+            android:layout_marginEnd="@dimen/margin"
+            android:text="@string/lorem"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title_about" />
