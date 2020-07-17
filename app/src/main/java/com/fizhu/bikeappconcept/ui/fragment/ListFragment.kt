@@ -41,12 +41,12 @@ class ListFragment : BaseFragment() {
                 initRv(0)
             }
             1 -> {
-                binding?.toolbar?.title = getString(R.string.roadbike)
+                binding?.toolbar?.title = getString(R.string.mountain_bike)
                 binding?.ivSelectedBike?.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.mountain_bike))
                 initRv(1)
             }
             2 -> {
-                binding?.toolbar?.title = getString(R.string.roadbike)
+                binding?.toolbar?.title = getString(R.string.trick_bike)
                 binding?.ivSelectedBike?.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.trick_bike))
                 initRv(2)
             }
