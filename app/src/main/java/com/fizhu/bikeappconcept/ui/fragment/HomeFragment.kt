@@ -4,11 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.fizhu.bikeappconcept.R
@@ -44,6 +42,7 @@ class HomeFragment : BaseFragment() {
     }
 
     override fun onInit() {
+        viewModel.getUserData()
         binding?.ivProfile?.setOnClickListener { (parentFragment?.parentFragment as MainFragment).gotToProfile() }
         initViewPager()
     }
@@ -51,11 +50,13 @@ class HomeFragment : BaseFragment() {
     private fun initViewPager() {
         val adapterSelected =
             BikeSelectedAdapter(requireContext())
-        with(binding?.vpSelectedBike!!) {
-            clipToPadding = false
-            clipChildren = false
-            offscreenPageLimit = 3
-            adapter = adapterSelected
+        binding?.vpSelectedBike?.let {
+            with(it) {
+                clipToPadding = false
+                clipChildren = false
+                offscreenPageLimit = 3
+                adapter = adapterSelected
+            }
         }
         binding?.vpSelectedBike?.isUserInputEnabled = false
 
@@ -64,30 +65,32 @@ class HomeFragment : BaseFragment() {
                 parentFragment?.parentFragment?.findNavController()
                     ?.navigate(MainFragmentDirections.actionMainFragmentToListFragment(it))
             }
-        with(binding?.vpBike!!) {
-            clipToPadding = false
-            clipChildren = false
-            offscreenPageLimit = 3
-            adapter = adapterType
+        binding?.vpBike?.let {
+            with(it) {
+                clipToPadding = false
+                clipChildren = false
+                offscreenPageLimit = 3
+                adapter = adapterType
 
-            val pageMarginPx = resources.getDimensionPixelOffset(R.dimen.pageMargin)
-            val offsetPx = resources.getDimensionPixelOffset(R.dimen.offset)
-            setPageTransformer { page, position ->
-                val viewPager = page.parent.parent as ViewPager2
-                val offset = position * -(2 * offsetPx + pageMarginPx)
-                if (viewPager.orientation == ViewPager2.ORIENTATION_HORIZONTAL) {
-                    if (ViewCompat.getLayoutDirection(viewPager) == ViewCompat.LAYOUT_DIRECTION_RTL) {
-                        page.translationX = -offset
+                val pageMarginPx = resources.getDimensionPixelOffset(R.dimen.pageMargin)
+                val offsetPx = resources.getDimensionPixelOffset(R.dimen.offset)
+                setPageTransformer { page, position ->
+                    val viewPager = page.parent.parent as ViewPager2
+                    val offset = position * -(2 * offsetPx + pageMarginPx)
+                    if (viewPager.orientation == ViewPager2.ORIENTATION_HORIZONTAL) {
+                        if (ViewCompat.getLayoutDirection(viewPager) == ViewCompat.LAYOUT_DIRECTION_RTL) {
+                            page.translationX = -offset
+                        } else {
+                            page.translationX = offset
+                        }
                     } else {
-                        page.translationX = offset
+                        page.translationY = offset
                     }
-                } else {
-                    page.translationY = offset
-                }
-                page.apply {
-                    translationY = abs(position) * 50f
-                    scaleX = 1f
-                    scaleY = 1f
+                    page.apply {
+                        translationY = abs(position) * 50f
+                        scaleX = 1f
+                        scaleY = 1f
+                    }
                 }
             }
         }

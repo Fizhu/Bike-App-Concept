@@ -18,11 +18,7 @@ class HomeViewModel(
 
     val userData: MutableLiveData<User> = MutableLiveData()
 
-    init {
-        getUserData()
-    }
-
-    private fun getUserData() {
+    fun getUserData() {
         compositeDisposable.route(repository.getUserById(repository.getId()?.toInt() ?: 0),
             io = {
                 if (it.isNotEmpty()) {
