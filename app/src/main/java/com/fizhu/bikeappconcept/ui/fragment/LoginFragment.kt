@@ -113,7 +113,7 @@ class LoginFragment : BaseFragment() {
     private fun handleBackPressed() {
         val onBackPressedCallback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                doExitApp(activity!!)
+                doExitApp(requireActivity())
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, onBackPressedCallback)

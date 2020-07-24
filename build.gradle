@@ -25,6 +25,8 @@ buildscript {
         koin_version = '2.1.5'
         imagepicker_version = '2.3.0'
         timber_version = '4.7.1'
+        dynamicanimation_version = '1.0.0'
+
     }
 
     repositories {

@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
+import androidx.dynamicanimation.animation.SpringAnimation
+import androidx.dynamicanimation.animation.SpringForce
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -43,6 +45,26 @@ class BikeAdapter(
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = ItemListBikeBinding.bind(view)
+        var currentVelocity = 0f
+
+        val rotation: SpringAnimation = SpringAnimation(view, SpringAnimation.ROTATION)
+            .setSpring(
+                SpringForce()
+                    .setFinalPosition(0f)
+                    .setDampingRatio(SpringForce.DAMPING_RATIO_HIGH_BOUNCY)
+                    .setStiffness(SpringForce.STIFFNESS_LOW)
+            )
+            .addUpdateListener { _, _, velocity ->
+                currentVelocity = velocity
+            }
+
+        val translationY: SpringAnimation = SpringAnimation(view, SpringAnimation.TRANSLATION_Y)
+            .setSpring(
+                SpringForce()
+                    .setFinalPosition(0f)
+                    .setDampingRatio(SpringForce.DAMPING_RATIO_MEDIUM_BOUNCY)
+                    .setStiffness(SpringForce.STIFFNESS_LOW)
+            )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -56,7 +78,7 @@ class BikeAdapter(
             }
             setImage(data.image?:"", ivBike)
             tvType.text = type
-            root.setOnClickListener { callBack.invoke(data) }
+            cardView.setOnClickListener { callBack.invoke(data) }
         }
     }
 

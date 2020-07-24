@@ -60,6 +60,46 @@ object BikeRaw {
             image = imgRoadbike,
             desc = App.context?.getString(R.string.lorem),
             price = "$11,999.00"
+        ),
+        Bike(
+            id = 15,
+            name = "Felt FR2 FRD Ultimate",
+            type = 0,
+            image = imgRoadbike,
+            desc = App.context?.getString(R.string.lorem),
+            price = "$11,999.00"
+        ),
+        Bike(
+            id = 16,
+            name = "Felt FR2 FRD Ultimate",
+            type = 0,
+            image = imgRoadbike,
+            desc = App.context?.getString(R.string.lorem),
+            price = "$11,999.00"
+        ),
+        Bike(
+            id = 17,
+            name = "Felt FR2 FRD Ultimate",
+            type = 0,
+            image = imgRoadbike,
+            desc = App.context?.getString(R.string.lorem),
+            price = "$11,999.00"
+        ),
+        Bike(
+            id = 18,
+            name = "Felt FR2 FRD Ultimate",
+            type = 0,
+            image = imgRoadbike,
+            desc = App.context?.getString(R.string.lorem),
+            price = "$11,999.00"
+        ),
+        Bike(
+            id = 19,
+            name = "Felt FR2 FRD Ultimate",
+            type = 0,
+            image = imgRoadbike,
+            desc = App.context?.getString(R.string.lorem),
+            price = "$11,999.00"
         )
     )
 
@@ -103,6 +143,46 @@ object BikeRaw {
             image = imgMtb,
             desc = App.context?.getString(R.string.lorem),
             price = "$549.99"
+        ),
+        Bike(
+            id = 20,
+            name = "Trek Marlin 5",
+            type = 1,
+            image = imgMtb,
+            desc = App.context?.getString(R.string.lorem),
+            price = "$549.99"
+        ),
+        Bike(
+            id = 21,
+            name = "Trek Marlin 5",
+            type = 1,
+            image = imgMtb,
+            desc = App.context?.getString(R.string.lorem),
+            price = "$549.99"
+        ),
+        Bike(
+            id = 22,
+            name = "Trek Marlin 5",
+            type = 1,
+            image = imgMtb,
+            desc = App.context?.getString(R.string.lorem),
+            price = "$549.99"
+        ),
+        Bike(
+            id = 23,
+            name = "Trek Marlin 5",
+            type = 1,
+            image = imgMtb,
+            desc = App.context?.getString(R.string.lorem),
+            price = "$549.99"
+        ),
+        Bike(
+            id = 24,
+            name = "Trek Marlin 5",
+            type = 1,
+            image = imgMtb,
+            desc = App.context?.getString(R.string.lorem),
+            price = "$549.99"
         )
     )
     val listBmx: List<Bike> = arrayListOf(
@@ -140,6 +220,46 @@ object BikeRaw {
         ),
         Bike(
             id = 14,
+            name = "MirraCo Axium 2018",
+            type = 2,
+            image = imgBmx,
+            desc = App.context?.getString(R.string.lorem),
+            price = "$429.00"
+        ),
+        Bike(
+            id = 25,
+            name = "MirraCo Axium 2018",
+            type = 2,
+            image = imgBmx,
+            desc = App.context?.getString(R.string.lorem),
+            price = "$429.00"
+        ),
+        Bike(
+            id = 26,
+            name = "MirraCo Axium 2018",
+            type = 2,
+            image = imgBmx,
+            desc = App.context?.getString(R.string.lorem),
+            price = "$429.00"
+        ),
+        Bike(
+            id = 27,
+            name = "MirraCo Axium 2018",
+            type = 2,
+            image = imgBmx,
+            desc = App.context?.getString(R.string.lorem),
+            price = "$429.00"
+        ),
+        Bike(
+            id = 28,
+            name = "MirraCo Axium 2018",
+            type = 2,
+            image = imgBmx,
+            desc = App.context?.getString(R.string.lorem),
+            price = "$429.00"
+        ),
+        Bike(
+            id = 29,
             name = "MirraCo Axium 2018",
             type = 2,
             image = imgBmx,

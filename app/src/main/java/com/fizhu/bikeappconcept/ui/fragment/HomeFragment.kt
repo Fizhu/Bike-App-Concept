@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.databinding.DataBindingUtil
@@ -15,6 +16,7 @@ import com.fizhu.bikeappconcept.adapters.BikeTypeAdapter
 import com.fizhu.bikeappconcept.databinding.FragmentHomeBinding
 import com.fizhu.bikeappconcept.utils.VerticalTextView
 import com.fizhu.bikeappconcept.utils.base.BaseFragment
+import com.fizhu.bikeappconcept.utils.ext.doExitApp
 import com.fizhu.bikeappconcept.viewmodels.HomeViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.abs
@@ -42,6 +44,7 @@ class HomeFragment : BaseFragment() {
     }
 
     override fun onInit() {
+        handleBackPressed()
         viewModel.getUserData()
         binding?.ivProfile?.setOnClickListener { (parentFragment?.parentFragment as MainFragment).gotToProfile() }
         initViewPager()
@@ -130,5 +133,14 @@ class HomeFragment : BaseFragment() {
         } else {
             tv?.setTextColor(ContextCompat.getColor(requireContext(), R.color.colorOnBackground))
         }
+    }
+
+    private fun handleBackPressed() {
+        val onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                doExitApp(requireActivity())
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
     }
 }
