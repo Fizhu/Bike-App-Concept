@@ -16,6 +16,7 @@ import com.fizhu.bikeappconcept.R
 import com.fizhu.bikeappconcept.adapters.BikeAdapter
 import com.fizhu.bikeappconcept.data.raw.BikeRaw
 import com.fizhu.bikeappconcept.databinding.FragmentListBinding
+import com.fizhu.bikeappconcept.utils.AppConstants
 import com.fizhu.bikeappconcept.utils.base.BaseFragment
 import com.fizhu.bikeappconcept.utils.ext.toast
 
@@ -109,9 +110,9 @@ class ListFragment : BaseFragment() {
                                 // We simply update the view properties without animation.
                                 val sign = if (direction == DIRECTION_BOTTOM) -1 else 1
                                 val rotationDelta =
-                                    sign * deltaDistance * OVERSCROLL_ROTATION_MAGNITUDE
+                                    sign * deltaDistance * AppConstants.OVERSCROLL_ROTATION_MAGNITUDE
                                 val translationYDelta =
-                                    sign * view.width * deltaDistance * OVERSCROLL_TRANSLATION_MAGNITUDE
+                                    sign * view.width * deltaDistance * AppConstants.OVERSCROLL_TRANSLATION_MAGNITUDE
                                 view.forEachVisibleHolder { holder: BikeAdapter.ViewHolder ->
                                     holder.rotation.cancel()
                                     holder.translationY.cancel()
@@ -135,7 +136,7 @@ class ListFragment : BaseFragment() {
                                 val sign = if (direction == DIRECTION_BOTTOM) -1 else 1
                                 // The list has reached the edge on fling.
                                 val translationVelocity =
-                                    sign * velocity * FLING_TRANSLATION_MAGNITUDE
+                                    sign * velocity * AppConstants.FLING_TRANSLATION_MAGNITUDE
                                 view.forEachVisibleHolder { holder: BikeAdapter.ViewHolder ->
                                     holder.translationY
                                         .setStartVelocity(translationVelocity)
@@ -152,7 +153,7 @@ class ListFragment : BaseFragment() {
                             holder.rotation
                                 // Update the velocity.
                                 // The velocity is calculated by the vertical scroll offset.
-                                .setStartVelocity(holder.currentVelocity - dx * SCROLL_ROTATION_MAGNITUDE)
+                                .setStartVelocity(holder.currentVelocity - dx * AppConstants.SCROLL_ROTATION_MAGNITUDE)
                                 // Start the animation. This does nothing if the animation is already running.
                                 .start()
                         }
@@ -173,17 +174,4 @@ class ListFragment : BaseFragment() {
         }
     }
 
-    companion object {
-        /** The magnitude of rotation while the list is scrolled. */
-        private const val SCROLL_ROTATION_MAGNITUDE = 0.25f
-
-        /** The magnitude of rotation while the list is over-scrolled. */
-        private const val OVERSCROLL_ROTATION_MAGNITUDE = -10
-
-        /** The magnitude of translation distance while the list is over-scrolled. */
-        private const val OVERSCROLL_TRANSLATION_MAGNITUDE = 0.2f
-
-        /** The magnitude of translation distance when the list reaches the edge on fling. */
-        private const val FLING_TRANSLATION_MAGNITUDE = 0.5f
-    }
 }
