@@ -35,10 +35,10 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/margin"
+        android:layoutAnimation="@anim/layout_animation_right_to_left"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_selected_bike"
-        tools:listitem="@layout/item_list_menu_setting" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_selected_bike"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
