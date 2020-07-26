@@ -20,6 +20,7 @@ abstract class Db : RoomDatabase() {
 
     // --- DAO ---
     abstract fun userDao(): UserDao
+    abstract fun bikeDao(): BikeDao
 
     companion object {
 

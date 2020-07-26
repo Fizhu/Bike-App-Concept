@@ -27,9 +27,11 @@
     <string name="setting">Setting</string>
     <string name="fizhu">Fizhu</string>
     <string name="fizhu_small">\@fizhu</string>
-    <string name="lastest">Lastest Favourite Bike</string>
+    <string name="lastest">One of Your Favourites</string>
     <string name="edit">Edit Profile</string>
     <string name="change">Change Password</string>
     <string name="logout">Logout</string>
     <string name="star">⭐⭐⭐⭐⭐ 5/5</string>
+    <string name="there_is_no_one_of_your_favourite_here">There is no one of your favourite here</string>
+    <string name="oops">Oops</string>
 </resources>

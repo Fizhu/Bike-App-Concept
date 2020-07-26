@@ -10,16 +10,16 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.esafirm.imagepicker.features.ImagePicker
 import com.esafirm.imagepicker.features.ReturnMode
 import com.fizhu.bikeappconcept.R
 import com.fizhu.bikeappconcept.databinding.FragmentAccountBinding
 import com.fizhu.bikeappconcept.utils.base.BaseFragment
+import com.fizhu.bikeappconcept.utils.ext.gone
 import com.fizhu.bikeappconcept.utils.ext.observe
 import com.fizhu.bikeappconcept.utils.ext.toast
+import com.fizhu.bikeappconcept.utils.ext.visible
 import com.fizhu.bikeappconcept.viewmodels.AccountViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
@@ -47,10 +47,14 @@ class AccountFragment : BaseFragment() {
     }
 
     override fun onInit() {
-        binding?.tvTitleAbout?.paintFlags =
-            binding?.tvTitleAbout!!.paintFlags or Paint.UNDERLINE_TEXT_FLAG
-        binding?.tvLastest?.paintFlags =
-            binding?.tvTitleAbout!!.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+        viewModel.count()
+        viewModel.getFav()
+        binding?.let {
+            it.tvTitleAbout.paintFlags =
+                it.tvTitleAbout.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+            it.tvLastest.paintFlags =
+                it.tvTitleAbout.paintFlags or Paint.UNDERLINE_TEXT_FLAG
+        }
         binding?.toolbar?.setOnMenuItemClickListener {
             if (it.itemId == R.id.setting) {
                 parentFragment?.parentFragment?.findNavController()
@@ -75,6 +79,34 @@ class AccountFragment : BaseFragment() {
                 viewModel.getUserData()
             } else {
                 requireActivity().toast("Update photo failed")
+            }
+        }
+        observe(viewModel.isExist) {
+            if (it) {
+                binding?.ivBike?.visible()
+                binding?.tvBikeName?.visible()
+                binding?.tvBikeType?.visible()
+                binding?.nodata?.gone()
+            } else {
+                binding?.ivBike?.gone()
+                binding?.tvBikeName?.gone()
+                binding?.tvBikeType?.gone()
+                binding?.nodata?.visible()
+            }
+        }
+        observe(viewModel.bike) {
+            binding?.ivBike?.let { imageView ->
+                Glide.with(requireContext())
+                    .asBitmap()
+                    .load(
+                        requireContext().resources.getIdentifier(
+                            it.image,
+                            "drawable",
+                            requireContext().packageName
+                        )
+                    )
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                    .into(imageView)
             }
         }
     }

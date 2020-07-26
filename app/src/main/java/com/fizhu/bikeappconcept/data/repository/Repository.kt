@@ -1,5 +1,6 @@
 package com.fizhu.bikeappconcept.data.repository
 
+import com.fizhu.bikeappconcept.data.models.Bike
 import com.fizhu.bikeappconcept.data.models.User
 import io.reactivex.Observable
 
@@ -15,7 +16,11 @@ interface Repository {
     fun setIsLogin(isLogin: Boolean)
     fun insertUser(user: User)
     fun getAllUsers(): Observable<List<User>>
+    fun getAllBike(): Observable<List<Bike>>
+    fun count(): Observable<Int>
     fun getId(): String?
     fun setId(id: String)
     fun updatePhoto(id: Int, photo: String)
+    fun insertBike(bike: Bike)
+    fun deleteBikeById(id: Int)
 }

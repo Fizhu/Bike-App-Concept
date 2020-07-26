@@ -41,8 +41,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/padding"
-            android:src="@drawable/ic_cam"
             android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_cam"
             app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
             app:layout_constraintEnd_toEndOf="@+id/iv_profile" />
 
@@ -73,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorAccent"
-            android:text="30 Favourite"
+            android:text="@{viewModel.count}"
             android:textColor="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
             app:layout_constraintStart_toStartOf="@+id/tv_fullname"
@@ -115,6 +115,61 @@
             android:textColor="@color/md_white_1000"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_about" />
+
+        <com.fizhu.bikeappconcept.utils.VerticalTextView
+            android:id="@+id/tv_bike_name"
+            style="@style/muliExtraBoldNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin"
+            android:text="@{viewModel.bike.name}"
+            android:textColor="@color/colorPrimary"
+            app:direction="downtoup"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_bike"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.fizhu.bikeappconcept.utils.VerticalTextView
+            android:id="@+id/tv_bike_type"
+            style="@style/muliExtraBoldExtraSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding"
+            android:text="@{viewModel.type}"
+            app:direction="downtoup"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_bike_name"
+            app:layout_constraintStart_toEndOf="@+id/tv_bike_name" />
+
+        <ImageView
+            android:id="@+id/iv_bike"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin"
+            android:layout_marginTop="@dimen/margin_extra"
+            android:layout_marginEnd="@dimen/margin"
+            android:adjustViewBounds="true"
+            android:visibility="gone"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/img_roadbike"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_bike_type"
+            app:layout_constraintTop_toBottomOf="@+id/tv_lastest" />
+
+        <RelativeLayout
+            android:id="@+id/nodata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_extra"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_lastest">
+
+            <include layout="@layout/layout_nodata" />
+
+        </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

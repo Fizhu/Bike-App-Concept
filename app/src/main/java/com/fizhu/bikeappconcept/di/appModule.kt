@@ -29,10 +29,11 @@ val databaseModule = module {
             .fallbackToDestructiveMigration().build()
     }
     single { get<Db>().userDao() }
+    single { get<Db>().bikeDao() }
 }
 
 val dataSourceModule = module {
-    single { LocalDataSource(get()) }
+    single { LocalDataSource(get(), get()) }
 }
 
 val viewModelModule = module {

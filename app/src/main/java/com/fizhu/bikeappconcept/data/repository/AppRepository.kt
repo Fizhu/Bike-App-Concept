@@ -1,6 +1,7 @@
 package com.fizhu.bikeappconcept.data.repository
 
 import com.fizhu.bikeappconcept.data.db.LocalDataSource
+import com.fizhu.bikeappconcept.data.models.Bike
 import com.fizhu.bikeappconcept.data.models.User
 import com.fizhu.bikeappconcept.data.pref.PrefDataSource
 import io.reactivex.Observable
@@ -21,7 +22,11 @@ open class AppRepository constructor(
     override fun setIsLogin(isLogin: Boolean) = pref.setIsLogin(isLogin)
     override fun insertUser(user: User) = db.insert(user)
     override fun getAllUsers(): Observable<List<User>> = db.getAllUsers
+    override fun getAllBike(): Observable<List<Bike>> = db.getAllBike
+    override fun count(): Observable<Int> = db.count
     override fun getId(): String? = pref.getId()
     override fun setId(id: String) = pref.setId(id)
     override fun updatePhoto(id: Int, photo: String) = db.updatePhoto(id, photo)
+    override fun insertBike(bike: Bike) = db.insertBike(bike)
+    override fun deleteBikeById(id: Int) = db.deleteBike(id)
 }

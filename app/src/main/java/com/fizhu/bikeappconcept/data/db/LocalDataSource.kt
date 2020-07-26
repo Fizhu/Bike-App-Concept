@@ -1,5 +1,6 @@
 package com.fizhu.bikeappconcept.data.db
 
+import com.fizhu.bikeappconcept.data.models.Bike
 import com.fizhu.bikeappconcept.data.models.User
 import com.fizhu.bikeappconcept.utils.ext.doBack
 import com.fizhu.bikeappconcept.utils.ext.loge
@@ -10,10 +11,13 @@ import com.fizhu.bikeappconcept.utils.ext.logi
  * https://github.com/Fizhu
  */
 open class LocalDataSource constructor(
-    private val userDao: UserDao
+    private val userDao: UserDao,
+    private val bikeDao: BikeDao
 ) {
 
     val getAllUsers = userDao.all
+    val getAllBike = bikeDao.all
+    val count = bikeDao.count
 
     fun insert(user: User) {
         doBack(
@@ -25,7 +29,28 @@ open class LocalDataSource constructor(
         )
     }
 
-    fun getUserByUsernamePassword(username: String, password: String) = userDao.getUserByUsernamePassword(username, password)
+    fun insertBike(bike: Bike) {
+        doBack(
+            action = {
+                bikeDao.insert(bike)
+            },
+            success = { logi("success insert bike to db") },
+            error = { loge("failed insert bike to db") }
+        )
+    }
+
+    fun deleteBike(id: Int) {
+        doBack(
+            action = {
+                bikeDao.deleteById(id)
+            },
+            success = { logi("success delete bike from db") },
+            error = { loge("failed delete bike from db") }
+        )
+    }
+
+    fun getUserByUsernamePassword(username: String, password: String) =
+        userDao.getUserByUsernamePassword(username, password)
 
     fun getUserByUsername(username: String) = userDao.getUserByUsername(username)
 
