@@ -31,4 +31,5 @@
     <string name="edit">Edit Profile</string>
     <string name="change">Change Password</string>
     <string name="logout">Logout</string>
+    <string name="star">⭐⭐⭐⭐⭐ 5/5</string>
 </resources>

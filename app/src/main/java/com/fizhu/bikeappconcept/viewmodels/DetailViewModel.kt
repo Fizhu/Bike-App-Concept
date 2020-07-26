@@ -1,6 +1,7 @@
 package com.fizhu.bikeappconcept.viewmodels
 
-import com.fizhu.bikeappconcept.data.repository.Repository
+import androidx.lifecycle.MutableLiveData
+import com.fizhu.bikeappconcept.data.models.Bike
 import com.fizhu.bikeappconcept.utils.base.BaseViewModel
 
 /**
@@ -8,8 +9,16 @@ import com.fizhu.bikeappconcept.utils.base.BaseViewModel
  * https://github.com/Fizhu
  */
 
-class DetailViewModel(
-    private val repository: Repository
-): BaseViewModel(){
+class DetailViewModel : BaseViewModel() {
 
+    val bike: MutableLiveData<Bike> = MutableLiveData()
+    val type: MutableLiveData<String> = MutableLiveData()
+
+    init {
+        type.value = when (bike.value?.type) {
+            0 -> "Road Bike"
+            1 -> "Mountain Bike"
+            else -> "Trick Bike"
+        }
+    }
 }

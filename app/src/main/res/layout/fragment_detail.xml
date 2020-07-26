@@ -4,6 +4,10 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.fizhu.bikeappconcept.viewmodels.DetailViewModel" />
+
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -23,13 +27,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:navigationIcon="@drawable/ic_baseline_arrow_white_24"
-                app:subtitle="@string/app_name"
-                app:title="@string/roadbike"
+                app:subtitle="@{viewModel.type}"
+                app:title="@{viewModel.bike.name}"
                 app:titleTextAppearance="@style/muliBoldLarge" />
 
             <ImageView
-                style="@style/clickableBackgroudBorderless"
                 android:id="@+id/btn_fav"
+                style="@style/clickableBackgroudBorderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/margin"
@@ -38,6 +42,60 @@
                 app:layout_constraintBottom_toBottomOf="@+id/toolbar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
+            <HorizontalScrollView
+                android:id="@+id/scroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_extra"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+                <ImageView
+                    android:id="@+id/iv_bike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="400dp"
+                    android:layout_marginBottom="@dimen/margin"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/app_name"/>
+
+            </HorizontalScrollView>
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin_extra"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@{viewModel.bike.price}"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scroll" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_stars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@string/star"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="@+id/chip_price"
+                app:layout_constraintStart_toEndOf="@+id/chip_price"
+                app:layout_constraintTop_toTopOf="@+id/chip_price" />
+
+            <TextView
+                android:id="@+id/tv_desc"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="@{viewModel.bike.desc}"
+                android:layout_margin="@dimen/margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chip_price" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

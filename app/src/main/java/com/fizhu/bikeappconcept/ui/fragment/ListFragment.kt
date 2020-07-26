@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EdgeEffect
 import androidx.core.content.ContextCompat
-import androidx.dynamicanimation.animation.SpringAnimation
-import androidx.dynamicanimation.animation.SpringForce
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,7 +16,6 @@ import com.fizhu.bikeappconcept.data.raw.BikeRaw
 import com.fizhu.bikeappconcept.databinding.FragmentListBinding
 import com.fizhu.bikeappconcept.utils.AppConstants
 import com.fizhu.bikeappconcept.utils.base.BaseFragment
-import com.fizhu.bikeappconcept.utils.ext.toast
 
 /**
  * Created by fizhu on 09,July,2020
@@ -82,7 +79,11 @@ class ListFragment : BaseFragment() {
         }
         val adapterBike =
             BikeAdapter(requireContext()) {
-                findNavController().navigate(ListFragmentDirections.actionListFragmentToDetailFragment())
+                findNavController().navigate(
+                    ListFragmentDirections.actionListFragmentToDetailFragment(
+                        it
+                    )
+                )
             }
         binding?.rv?.let {
             with(it) {
