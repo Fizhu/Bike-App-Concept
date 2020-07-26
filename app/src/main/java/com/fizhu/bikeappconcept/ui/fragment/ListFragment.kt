@@ -82,7 +82,7 @@ class ListFragment : BaseFragment() {
         }
         val adapterBike =
             BikeAdapter(requireContext()) {
-                requireContext().toast(it.name.toString())
+                findNavController().navigate(ListFragmentDirections.actionListFragmentToDetailFragment())
             }
         binding?.rv?.let {
             with(it) {

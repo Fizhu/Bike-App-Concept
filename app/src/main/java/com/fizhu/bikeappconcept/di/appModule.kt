@@ -42,6 +42,7 @@ val viewModelModule = module {
     viewModel { HomeViewModel(get()) }
     viewModel { FavoriteViewModel(get()) }
     viewModel { AccountViewModel(get()) }
+    viewModel { DetailViewModel(get()) }
 }
 
 val appModule = listOf(persistenceModule, databaseModule, dataSourceModule, repositoryModule, viewModelModule)
