@@ -14,17 +14,24 @@
         android:id="@+id/mainFragment"
         android:name="com.fizhu.bikeappconcept.ui.fragment.MainFragment"
         android:label="MainFragment"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_settingFragment"
             app:destination="@id/settingFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"/>
+            app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_mainFragment_to_listFragment"
             app:destination="@id/listFragment"
+            app:enterAnim="@anim/slide_up"
+            app:exitAnim="@anim/slide_down"
+            app:popEnterAnim="@anim/slide_up"
+            app:popExitAnim="@anim/slide_down" />
+        <action
+            android:id="@+id/action_mainFragment_to_detailFragment"
+            app:destination="@id/detailFragment"
             app:enterAnim="@anim/slide_up"
             app:exitAnim="@anim/slide_down"
             app:popEnterAnim="@anim/slide_up"
@@ -33,30 +40,30 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="com.fizhu.bikeappconcept.ui.fragment.ListFragment"
-        tools:layout="@layout/fragment_list"
-        android:label="ListFragment" >
+        android:label="ListFragment"
+        tools:layout="@layout/fragment_list">
         <argument
             android:name="type"
-            app:argType="integer"
-            android:defaultValue="0" />
+            android:defaultValue="0"
+            app:argType="integer" />
         <action
             android:id="@+id/action_listFragment_to_detailFragment"
             app:destination="@id/detailFragment"
             app:enterAnim="@anim/slide_up"
             app:exitAnim="@anim/slide_down"
             app:popEnterAnim="@anim/slide_up"
-            app:popExitAnim="@anim/slide_down"/>
+            app:popExitAnim="@anim/slide_down" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        tools:layout="@layout/fragment_detail"
         android:name="com.fizhu.bikeappconcept.ui.fragment.DetailFragment"
-        android:label="DetailFragment" >
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail">
         <argument
             android:name="bike"
+            android:defaultValue="@null"
             app:argType="com.fizhu.bikeappconcept.data.models.Bike"
-            app:nullable="true"
-            android:defaultValue="@null" />
+            app:nullable="true" />
     </fragment>
 
 </navigation>

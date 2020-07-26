@@ -56,6 +56,8 @@ open class LocalDataSource constructor(
 
     fun getUserById(id: Int) = userDao.getUserById(id)
 
+    fun getBikeById(id: Int) = bikeDao.getById(id)
+
     fun updatePhoto(id: Int, photo: String) = userDao.updatePhoto(id, photo)
 
 }

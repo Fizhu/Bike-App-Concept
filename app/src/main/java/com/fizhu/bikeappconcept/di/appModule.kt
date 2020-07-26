@@ -43,7 +43,7 @@ val viewModelModule = module {
     viewModel { HomeViewModel(get()) }
     viewModel { FavoriteViewModel(get()) }
     viewModel { AccountViewModel(get()) }
-    viewModel { DetailViewModel() }
+    viewModel { DetailViewModel(get()) }
 }
 
 val appModule =

@@ -14,6 +14,7 @@ import com.fizhu.bikeappconcept.databinding.FragmentDetailBinding
 import com.fizhu.bikeappconcept.utils.base.BaseFragment
 import com.fizhu.bikeappconcept.utils.ext.color
 import com.fizhu.bikeappconcept.utils.ext.observe
+import com.fizhu.bikeappconcept.utils.ext.toast
 import com.fizhu.bikeappconcept.viewmodels.DetailViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -43,26 +44,36 @@ class DetailFragment : BaseFragment() {
 
     override fun onInit() {
         binding?.toolbar?.setNavigationOnClickListener { findNavController().navigateUp() }
-        binding?.btnFav?.let {
-            if (isFav) {
-                it.setColorFilter(requireContext().color(R.color.colorPrimary))
-            } else {
-                it.setColorFilter(requireContext().color(R.color.colorOnBackground))
+        args.bike?.let {
+            viewModel.bike.postValue(it)
+        }
+        observe(viewModel.isFav) {
+            isFav = it
+            binding?.btnFav?.let { imageView ->
+                if (isFav) {
+                    imageView.setColorFilter(requireContext().color(R.color.colorPrimary))
+                } else {
+                    imageView.setColorFilter(requireContext().color(R.color.colorOnBackground))
+                }
             }
+        }
+        binding?.btnFav?.let {
             it.setOnClickListener { _ ->
                 isFav = if (isFav) {
                     it.setColorFilter(requireContext().color(R.color.colorOnBackground))
+                    viewModel.removeFromFav()
+                    requireContext().toast("Removed from Favourite")
                     false
                 } else {
                     it.setColorFilter(requireContext().color(R.color.colorPrimary))
+                    viewModel.addToFav()
+                    requireContext().toast("Added to Favourite")
                     true
                 }
             }
         }
-        args.bike?.let {
-            viewModel.bike.postValue(it)
-        }
         observe(viewModel.bike) {
+            viewModel.checkFav()
             binding?.ivBike?.let { imageView ->
                 Glide.with(requireContext())
                     .asBitmap()

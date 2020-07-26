@@ -18,6 +18,7 @@ open class AppRepository constructor(
     override fun getUserByUsernamePassword(username: String, password: String): Observable<List<User>> = db.getUserByUsernamePassword(username, password)
     override fun getUserByUsername(username: String): Observable<List<User>> = db.getUserByUsername(username)
     override fun getUserById(id: Int): Observable<List<User>> = db.getUserById(id)
+    override fun getBikeById(id: Int): Observable<List<Bike>> = db.getBikeById(id)
     override fun getIsLogin(): Boolean = pref.getIsLogin()
     override fun setIsLogin(isLogin: Boolean) = pref.setIsLogin(isLogin)
     override fun insertUser(user: User) = db.insert(user)

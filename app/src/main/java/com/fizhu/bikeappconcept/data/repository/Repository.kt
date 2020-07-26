@@ -12,6 +12,7 @@ interface Repository {
     fun getUserByUsernamePassword(username: String, password: String): Observable<List<User>>
     fun getUserByUsername(username: String): Observable<List<User>>
     fun getUserById(id: Int): Observable<List<User>>
+    fun getBikeById(id: Int): Observable<List<Bike>>
     fun getIsLogin() : Boolean
     fun setIsLogin(isLogin: Boolean)
     fun insertUser(user: User)

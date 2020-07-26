@@ -9,168 +9,177 @@
             type="com.fizhu.bikeappconcept.viewmodels.AccountViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            style="@style/muliBoldLarge"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:menu="@menu/menu_account"
-            app:title="@string/account"
-            app:titleTextAppearance="@style/muliBoldLarge" />
+            android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/iv_profile"
-            profileImage="@{viewModel.userData.photo}"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="@dimen/margin"
-            android:contentDescription="@string/app_name"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/muliBoldLarge"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:menu="@menu/menu_account"
+                app:title="@string/account"
+                app:titleTextAppearance="@style/muliBoldLarge" />
 
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btn_cam"
-            style="@style/clickableBackgroudBorderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/padding"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/ic_cam"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
-            app:layout_constraintEnd_toEndOf="@+id/iv_profile" />
+            <ImageView
+                android:id="@+id/iv_profile"
+                profileImage="@{viewModel.userData.photo}"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="@dimen/margin"
+                android:contentDescription="@string/app_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
-        <TextView
-            android:id="@+id/tv_fullname"
-            style="@style/muliBoldLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="@{viewModel.userData.name}"
-            android:textColor="@color/colorPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/iv_profile"
-            app:layout_constraintTop_toTopOf="@+id/iv_profile" />
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/btn_cam"
+                style="@style/clickableBackgroudBorderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_cam"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
+                app:layout_constraintEnd_toEndOf="@+id/iv_profile" />
 
-        <TextView
-            android:id="@+id/tv_username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{'@' + viewModel.userData.username}"
-            app:layout_constraintStart_toStartOf="@+id/tv_fullname"
-            app:layout_constraintTop_toBottomOf="@+id/tv_fullname" />
+            <TextView
+                android:id="@+id/tv_fullname"
+                style="@style/muliBoldLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{viewModel.userData.name}"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/iv_profile"
+                app:layout_constraintTop_toTopOf="@+id/iv_profile" />
 
-        <com.google.android.material.chip.Chip
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorAccent"
-            android:text="@{viewModel.count}"
-            android:textColor="@color/colorPrimary"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
-            app:layout_constraintStart_toStartOf="@+id/tv_fullname"
-            app:layout_constraintTop_toBottomOf="@+id/tv_username"
-            app:layout_constraintVertical_bias="1.0" />
+            <TextView
+                android:id="@+id/tv_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{'@' + viewModel.userData.username}"
+                app:layout_constraintStart_toStartOf="@+id/tv_fullname"
+                app:layout_constraintTop_toBottomOf="@+id/tv_fullname" />
 
-        <TextView
-            android:id="@+id/tv_title_about"
-            style="@style/muliBoldSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_marginTop="@dimen/margin_extra"
-            android:text="@string/about"
-            android:textColor="@color/md_white_1000"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_profile" />
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/colorAccent"
+                android:text="@{viewModel.count}"
+                android:textColor="@color/colorPrimary"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
+                app:layout_constraintStart_toStartOf="@+id/tv_fullname"
+                app:layout_constraintTop_toBottomOf="@+id/tv_username"
+                app:layout_constraintVertical_bias="1.0" />
 
-        <TextView
-            android:id="@+id/tv_about"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_marginTop="@dimen/padding"
-            android:layout_marginEnd="@dimen/margin"
-            android:text="@string/lorem"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title_about" />
+            <TextView
+                android:id="@+id/tv_title_about"
+                style="@style/muliBoldSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin_extra"
+                android:text="@string/about"
+                android:textColor="@color/md_white_1000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_profile" />
 
-        <TextView
-            android:id="@+id/tv_lastest"
-            style="@style/muliBoldSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_marginTop="@dimen/margin_extra"
-            android:text="@string/lastest"
-            android:textColor="@color/md_white_1000"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_about" />
+            <TextView
+                android:id="@+id/tv_about"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/padding"
+                android:layout_marginEnd="@dimen/margin"
+                android:text="@string/lorem"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_about" />
 
-        <com.fizhu.bikeappconcept.utils.VerticalTextView
-            android:id="@+id/tv_bike_name"
-            style="@style/muliExtraBoldNormal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin"
-            android:text="@{viewModel.bike.name}"
-            android:textColor="@color/colorPrimary"
-            app:direction="downtoup"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_bike"
-            app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/tv_lastest"
+                style="@style/muliBoldSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin_extra"
+                android:text="@string/lastest"
+                android:textColor="@color/md_white_1000"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_about" />
 
-        <com.fizhu.bikeappconcept.utils.VerticalTextView
-            android:id="@+id/tv_bike_type"
-            style="@style/muliExtraBoldExtraSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/padding"
-            android:text="@{viewModel.type}"
-            app:direction="downtoup"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_bike_name"
-            app:layout_constraintStart_toEndOf="@+id/tv_bike_name" />
+            <com.fizhu.bikeappconcept.utils.VerticalTextView
+                android:id="@+id/tv_bike_name"
+                style="@style/muliExtraBoldNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:text="@{viewModel.bike.name}"
+                android:textColor="@color/colorPrimary"
+                android:visibility="gone"
+                app:direction="downtoup"
+                android:padding="@dimen/half_padding"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_bike"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
-            android:id="@+id/iv_bike"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_marginTop="@dimen/margin_extra"
-            android:layout_marginEnd="@dimen/margin"
-            android:adjustViewBounds="true"
-            android:visibility="gone"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/img_roadbike"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/tv_bike_type"
-            app:layout_constraintTop_toBottomOf="@+id/tv_lastest" />
+            <com.fizhu.bikeappconcept.utils.VerticalTextView
+                android:id="@+id/tv_bike_type"
+                style="@style/muliExtraBoldExtraSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/padding"
+                android:text="@{viewModel.type}"
+                android:visibility="gone"
+                app:direction="downtoup"
+                android:padding="@dimen/half_padding"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_bike_name"
+                app:layout_constraintStart_toEndOf="@+id/tv_bike_name" />
 
-        <RelativeLayout
-            android:id="@+id/nodata"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_extra"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_lastest">
+            <ImageView
+                android:id="@+id/iv_bike"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin_extra"
+                android:layout_marginEnd="@dimen/margin"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/img_roadbike"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/tv_bike_type"
+                app:layout_constraintTop_toBottomOf="@+id/tv_lastest" />
 
-            <include layout="@layout/layout_nodata" />
+            <RelativeLayout
+                android:id="@+id/nodata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_extra"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_lastest">
 
-        </RelativeLayout>
+                <include layout="@layout/layout_nodata" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </RelativeLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </layout>

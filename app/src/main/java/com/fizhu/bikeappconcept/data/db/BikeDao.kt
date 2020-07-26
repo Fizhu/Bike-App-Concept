@@ -21,6 +21,9 @@ interface BikeDao {
     @get:Query("SELECT COUNT(*) FROM bike_table")
     val count: Observable<Int>
 
+    @Query("SELECT * FROM bike_table WHERE id = :id")
+    fun getById(id: Int): Observable<List<Bike>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(bike: Bike)
 

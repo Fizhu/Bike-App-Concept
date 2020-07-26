@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.fizhu.bikeappconcept.R
+import com.fizhu.bikeappconcept.data.models.Bike
 import com.fizhu.bikeappconcept.databinding.FragmentMainBinding
 import com.fizhu.bikeappconcept.utils.base.BaseFragment
 
