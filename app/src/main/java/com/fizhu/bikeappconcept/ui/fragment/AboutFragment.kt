@@ -15,9 +15,6 @@ import io.reactivex.disposables.CompositeDisposable
 class AboutFragment : BaseFragment() {
 
     private var binding: FragmentAboutBinding? = null
-    private val compositeDisposable by lazy {
-        CompositeDisposable()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

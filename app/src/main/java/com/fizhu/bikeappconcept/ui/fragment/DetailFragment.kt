@@ -46,6 +46,13 @@ class DetailFragment : BaseFragment() {
         binding?.toolbar?.setNavigationOnClickListener { findNavController().navigateUp() }
         args.bike?.let {
             viewModel.bike.postValue(it)
+            viewModel.type.postValue(
+                when (it.type) {
+                    0 -> "Road Bike"
+                    1 -> "Mountain Bike"
+                    else -> "Trick Bike"
+                }
+            )
         }
         observe(viewModel.isFav) {
             isFav = it

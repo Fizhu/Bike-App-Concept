@@ -24,14 +24,6 @@ class DetailViewModel(
     val isFav: LiveData<Boolean>
         get() = _isFav
 
-    init {
-        type.value = when (bike.value?.type) {
-            0 -> "Road Bike"
-            1 -> "Mountain Bike"
-            else -> "Trick Bike"
-        }
-    }
-
     fun addToFav() {
         bike.value?.let {
             repository.insertBike(it)

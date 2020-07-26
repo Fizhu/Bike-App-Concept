@@ -36,11 +36,6 @@ class AccountViewModel(
 
     init {
         getUserData()
-        type.value = when (bike.value?.type) {
-            0 -> "Road Bike"
-            1 -> "Mountain Bike"
-            else -> "Trick Bike"
-        }
     }
 
     fun count() {
@@ -63,6 +58,13 @@ class AccountViewModel(
             io = {
                 _isExist.postValue(true)
                 bike.postValue(it[0])
+                type.postValue(
+                    when (it[0].type) {
+                        0 -> "Road Bike"
+                        1 -> "Mountain Bike"
+                        else -> "Trick Bike"
+                    }
+                )
             },
             error = {
                 _isExist.postValue(false)

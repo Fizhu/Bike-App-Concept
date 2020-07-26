@@ -48,7 +48,6 @@ class AccountFragment : BaseFragment() {
 
     override fun onInit() {
         viewModel.count()
-        viewModel.getFav()
         binding?.let {
             it.tvTitleAbout.paintFlags =
                 it.tvTitleAbout.paintFlags or Paint.UNDERLINE_TEXT_FLAG
@@ -109,6 +108,11 @@ class AccountFragment : BaseFragment() {
                     .into(imageView)
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getFav()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

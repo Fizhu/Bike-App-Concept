@@ -34,4 +34,7 @@
     <string name="star">⭐⭐⭐⭐⭐ 5/5</string>
     <string name="there_is_no_one_of_your_favourite_here">There is no one of your favourite here</string>
     <string name="oops">Oops</string>
+    <string name="version">Version 1.0</string>
+    <string name="if_you_like_the_app_it_will_be_pleasure_to_give_some_feedback">If you like the app, it will be pleasure to give some feedback :)</string>
+    <string name="share">Share</string>
 </resources>
