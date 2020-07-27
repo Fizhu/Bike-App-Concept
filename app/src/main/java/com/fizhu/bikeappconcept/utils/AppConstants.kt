@@ -8,36 +8,17 @@ object AppConstants {
 
     const val SPLASH_TIME_MILLISECOND: Long = 1500
 
-    const val REQUEST_CODE_PERMISSION: Int = 1000
-    const val REQUEST_CODE_IMAGE_CAPTURE = 1
-    const val REQUEST_CODE_IMAGE_GALLERY = 10
+    const val PLAYSTORE_URL = "https://play.google.com/store/apps/details?id=com.fizhu.bikeappconcept"
 
-    const val LOCATION_PERMISSION_REQUEST_CODE = 1
-    const val LOCATION_INTENT = 2
+    const val DESIGNED_BY = "Designed by Fizhu";
 
-    const val DATE_FORMAT_DEFAULT: String = "dd MMMM yyyy"
-    const val DATE_FORMAT_TIME: String = "HH:mm"
-    const val DATE_FORMAT_DAY: String = "EEEE"
+    const val SHARE_CONTENT = "A Bike App Concept - UI/UX Template :\n$PLAYSTORE_URL\n- $DESIGNED_BY"
 
-    const val IMAGE_DIRECTORY_NAME: String = "Android File Upload"
+    const val EMAIL = "mailto:hvyz.anbiya@gmail.com"
 
-    const val TOPIC_GLOBAL = "global"
-    const val REGISTRATION_COMPLETE = "REGISTRATIONCOMPLETE"
-    const val PUSH_NOTIFICATION = "PUSH"
-    const val NOTIFICATION_ID = 100
-    const val NOTIFICATION_ID_BIG_IMAGE = 101
-    const val SHARED_PREF = "AH_FIREBASE"
-    const val KEY_REG_ID = "regId"
+    const val GIT_HUB = "https://github.com/Fizhu/Bike-App-Concept"
 
-    const val KEY_BUNDLE_USER_INFO = "KEY_BUNDLE_USER_INFO"
-    const val KEY_BUNDLE_PERSONAL_DATA = "KEY_BUNDLE_PERSONAL_DATA"
-
-    const val RC_SIGN_IN = 101
-    const val GOOGLE_SIGN_IN_LOGIN = 102
-
-    const val ERROR_MESSAGE = "Cannot proceed your request, please try again later"
-
-    const val NETWORK_TIMEOUT = 60L
+    const val FIGMA = "https://www.figma.com/file/pBXqRXw5ByP2dCpjCuJscU/Bike-App-Concept?node-id=0%3A1"
 
     /** The magnitude of rotation while the list is scrolled. */
     const val SCROLL_ROTATION_MAGNITUDE = 0.25f

@@ -35,6 +35,13 @@
     <string name="there_is_no_one_of_your_favourite_here">There is no one of your favourite here</string>
     <string name="oops">Oops</string>
     <string name="version">Version 1.0</string>
-    <string name="if_you_like_the_app_it_will_be_pleasure_to_give_some_feedback">If you like the app, it will be pleasure to give some feedback :)</string>
+    <string name="if_you_like_the_app_it_will_be_pleasure_to_give_some_feedback">If you like the app, give me some feedback :)</string>
     <string name="share">Share</string>
+    <string name="rate">Rate on Google Play</string>
+    <string name="mail">Feedback by E-mail</string>
+    <string name="github">Source code on Github</string>
+    <string name="figma">Design on Figma</string>
+    <string name="share_with">Share With</string>
+    <string name="about_email_intent">About:Bike App Concept</string>
+    <string name="email_app_not_found">Email app not found !</string>
 </resources>

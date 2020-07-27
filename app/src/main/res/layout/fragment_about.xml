@@ -92,6 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin"
                 android:text="@string/if_you_like_the_app_it_will_be_pleasure_to_give_some_feedback"
+                android:textColor="@color/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -108,7 +109,6 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv"
-                android:layout_marginTop="@dimen/margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
