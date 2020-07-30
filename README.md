@@ -10,6 +10,7 @@
 * Data Binding
 * View Binding
 * Live Data
+* Room
 * ViewPager2
 * Constraint Layout
 * Koin Dependency Injection
@@ -17,6 +18,10 @@
 * Animation
 
 ##### 100% Written in Kotlin lang
+
+<hr>
+
+![SS](https://raw.githubusercontent.com/Fizhu/Bike-App-Concept/master/images/concept.png)
 
 <hr>
 
