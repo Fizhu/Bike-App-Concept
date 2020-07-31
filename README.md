@@ -17,8 +17,6 @@
 * Timber
 * Animation
 
-##### 100% Written in Kotlin lang
-
 <hr>
 
 ![SS](https://raw.githubusercontent.com/Fizhu/Bike-App-Concept/master/images/concept.png)
