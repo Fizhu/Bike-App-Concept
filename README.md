@@ -17,6 +17,8 @@
 * Timber
 * Animation
 
+#### If you like it, don't forget to follow me, fork and star ⭐ on this repo :)
+
 <hr>
 
 ![SS](https://raw.githubusercontent.com/Fizhu/Bike-App-Concept/master/images/concept.png)
