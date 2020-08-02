@@ -45,4 +45,9 @@ Get it on Figma 👇
 ![SS](https://raw.githubusercontent.com/Fizhu/Bike-App-Concept/master/images/concept.png)
 <hr>
 
-Regards, Fizhu
+## Author
+#### M. Hafizh Anbiya
+
+If you guys love it or got any issue it will be pleasure to give me a feedback 👋
+
+####Regards, Fizhu
