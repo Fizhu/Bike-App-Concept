@@ -28,10 +28,10 @@
 
 #### If you like it, don't forget to follow me, fork and star ⭐ on this repo :)
 
-<hr>
-
+## Design 🖖🏼
+Get it on Figma 👇
 [<img src="https://irukandji.tv/wp-content/uploads/2019/08/figma.png" alt="Get it on Figma" height=
-"80">](https://www.figma.com/file/pBXqRXw5ByP2dCpjCuJscU/Bike-App-Concept?node-id=0%3A1)
+"40">](https://www.figma.com/file/pBXqRXw5ByP2dCpjCuJscU/Bike-App-Concept?node-id=0%3A1)
 ![SS](https://raw.githubusercontent.com/Fizhu/Bike-App-Concept/master/images/concept.png)
 
 
