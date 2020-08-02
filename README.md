@@ -1,11 +1,10 @@
 # Bike App Concept
 
-## Demo
-* Get it on Google Play 🔥
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height=
-"80">](https://play.google.com/store/apps/details?id=id.rifafauzi.movie)
+"80">](https://play.google.com/store/apps/details?id=com.fizhu.bikeappconcept)
 
-* Sneak Peek 👽
+## Sneak Peek 👽
+
 <pre>
 <img src="/images/concept.png" width="200">
 </pre>
