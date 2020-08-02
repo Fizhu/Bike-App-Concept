@@ -51,7 +51,7 @@ Get it on Figma 👇
 ## Author
 * **M. Hafizh Anbiya**
 
-If you guys love it or got any issue it will be pleasure to give me a feedback 👋
+If you guys love it or got any issue, it will be pleasure to give me a feedback 👋
 Stay with me, next project will be uploaded later 😎
 
 #### Regards, Fizhu - 2020
