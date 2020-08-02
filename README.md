@@ -31,7 +31,7 @@
 ## Design 🖖🏼
 Get it on Figma 👇
 <br/>
-[<img src="https://i.pinimg.com/originals/5e/fd/4e/5efd4e04173b52c1c4d1f459679bf7fb.png" alt="Get it on Figma" height=
+[<https://wptavern.com/wp-content/uploads/2018/11/Screen-Shot-2018-11-19-at-8.43.27-PM.png" alt="Get it on Figma" height=
 "30">](https://www.figma.com/file/pBXqRXw5ByP2dCpjCuJscU/Bike-App-Concept?node-id=0%3A1)
 <br/>
 ![SS](https://raw.githubusercontent.com/Fizhu/Bike-App-Concept/master/images/concept.png)
