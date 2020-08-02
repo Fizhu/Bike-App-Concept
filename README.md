@@ -5,7 +5,7 @@
 
 
 [<img src="https://irukandji.tv/wp-content/uploads/2019/08/figma.png" alt="Get it on Figma" height=
-"40">](https://www.figma.com/file/pBXqRXw5ByP2dCpjCuJscU/Bike-App-Concept?node-id=0%3A1)
+"80">](https://www.figma.com/file/pBXqRXw5ByP2dCpjCuJscU/Bike-App-Concept?node-id=0%3A1)
 
 ## Sneak Peek 👽
 
