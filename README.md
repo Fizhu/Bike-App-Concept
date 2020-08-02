@@ -15,7 +15,7 @@
 
 ## Sneak Peek 👽
 <pre>
-<img src="/images/concept.png" width="200">
+<img src="/images/Frame 3.png" width="200"> <img src="/images/Frame 4.png" width="200"> <img src="/images/Frame 5.png" width="200"> <img src="/images/Frame 6.png" width="200"> <img src="/images/Frame 7.png" width="200"> <img src="/images/Frame 8.png" width="200">
 </pre>
 
 
