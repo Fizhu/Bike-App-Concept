@@ -4,7 +4,7 @@
 "80">](https://play.google.com/store/apps/details?id=com.fizhu.bikeappconcept)
 
 
-[<img src="https://i.pinimg.com/originals/5e/fd/4e/5efd4e04173b52c1c4d1f459679bf7fb.png" alt="Get it on Figma" height=
+[<img src="https://irukandji.tv/wp-content/uploads/2019/08/figma.png" alt="Get it on Figma" height=
 "40">](https://www.figma.com/file/pBXqRXw5ByP2dCpjCuJscU/Bike-App-Concept?node-id=0%3A1)
 
 ## Sneak Peek 👽
