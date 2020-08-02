@@ -21,7 +21,7 @@
 
 #### Oops, before you going deep, if you like it, don't forget to follow me, fork and star ⭐ on this repo :)
 
-## Several things that used in this app :
+## This App Contains :
 * MVVM Architecture Design Pattern
 * RxJava
 * RxBinding
