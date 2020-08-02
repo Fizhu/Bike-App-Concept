@@ -53,4 +53,4 @@ Get it on Figma 👇
 
 If you guys love it or got any issue it will be pleasure to give me a feedback 👋
 
-####Regards, Fizhu
+#### Regards, Fizhu - 2020
