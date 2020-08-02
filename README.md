@@ -36,6 +36,9 @@
 * Koin Dependency Injection
 * Animation
 
+## How to use this app 😈
+First, you have to register on register page on this app, dont worry about your data, its all will be stored on your local storage and then go login with registered username and password. After that just go play with it, you can update your profile photo, adding bike to favourite list and also remove it, look at bike detail and feel the animation 🤭
+
 ## Design 🖖🏼
 Get it on Figma 👇
 <br/>
