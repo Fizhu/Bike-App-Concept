@@ -7,7 +7,7 @@
 *  Register
 *  Login
 *  Username Existed Checker
-*  Add/Remove Bike to Favoirite
+*  Add/Remove Bike to Favorite
 *  Update Photo Profile
 *  Detail Bike
 *  Animation for Recyclerview and Navigation Component Transition
