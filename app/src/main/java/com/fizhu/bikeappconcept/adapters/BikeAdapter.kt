@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.fizhu.bikeappconcept.data.models.Bike
 import com.fizhu.bikeappconcept.databinding.ItemListBikeBinding
+import com.fizhu.bikeappconcept.utils.ext.loadImageFromLocalResourcesWithIdentifier
 
 /**
  * Created by fizhu on 15,July,2020
@@ -76,17 +77,10 @@ class BikeAdapter(
                 1 -> "Mountain Bike"
                 else -> "Trick Bike"
             }
-            setImage(data.image?:"", ivBike)
+
+            ivBike.loadImageFromLocalResourcesWithIdentifier(data.image ?: "")
             tvType.text = type
             cardView.setOnClickListener { callBack.invoke(data) }
         }
-    }
-
-    private fun setImage(url: String, iv: ImageView) {
-        Glide.with(context)
-            .asBitmap()
-            .load(context.resources.getIdentifier(url, "drawable", context.packageName))
-            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-            .into(iv)
     }
 }

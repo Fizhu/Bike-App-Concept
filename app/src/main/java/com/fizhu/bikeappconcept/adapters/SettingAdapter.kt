@@ -8,7 +8,9 @@ import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.fizhu.bikeappconcept.R
+import com.fizhu.bikeappconcept.data.raw.BikeRaw
 import com.fizhu.bikeappconcept.databinding.ItemListMenuSettingBinding
+import com.fizhu.bikeappconcept.utils.ext.loadImageFromLocalResources
 
 /**
  * Created by fizhu on 15,July,2020
@@ -20,7 +22,17 @@ class SettingAdapter(
     private val callBack: (position: Int) -> Unit
 ) : RecyclerView.Adapter<SettingAdapter.ViewHolder>() {
 
-    private val list: List<Int> = arrayListOf(0, 1, 2)
+    private val titles = listOf(
+        context.getString(R.string.edit),
+        context.getString(R.string.change),
+        context.getString(R.string.logout)
+    )
+
+    private val icons = listOf(
+        R.drawable.ic_edit,
+        R.drawable.ic_key,
+        R.drawable.ic_logout
+    )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(
@@ -31,39 +43,18 @@ class SettingAdapter(
             ).root
         )
 
-    override fun getItemCount(): Int = list.size
+    override fun getItemCount(): Int = titles.size
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val binding = ItemListMenuSettingBinding.bind(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val data = list[position]
         with(holder.binding) {
-            when (position) {
-                0 -> {
-                    tvTitle.text = context.getString(R.string.edit)
-                    set(R.drawable.ic_edit, ivIcon)
-                }
-                1 -> {
-                    tvTitle.text = context.getString(R.string.change)
-                    set(R.drawable.ic_key, ivIcon)
-                }
-                2 -> {
-                    tvTitle.text = context.getString(R.string.logout)
-                    set(R.drawable.ic_logout, ivIcon)
-                }
-            }
-            root.setOnClickListener { callBack.invoke(data) }
-        }
-    }
+            ivIcon.loadImageFromLocalResources(icons[position])
+            tvTitle.text = titles[position]
 
-    private fun set(image: Int, iv: ImageView) {
-        iv.setImageDrawable(
-            ContextCompat.getDrawable(
-                context,
-                image
-            )
-        )
+            root.setOnClickListener { callBack.invoke(position) }
+        }
     }
 }
