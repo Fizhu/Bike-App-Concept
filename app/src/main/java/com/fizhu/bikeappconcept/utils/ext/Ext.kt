@@ -9,10 +9,13 @@ import android.graphics.Canvas
 import android.util.DisplayMetrics
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.navOptions
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.fizhu.bikeappconcept.R
 import timber.log.Timber
 import java.text.DecimalFormat
@@ -31,7 +34,7 @@ var progressDialog: ProgressDialog? = null
 
 fun Context.toast(msg: String?) = Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
 
-fun startActivityWithFade(activity: Activity,clazz: Class<*>) {
+fun startActivityWithFade(activity: Activity, clazz: Class<*>) {
     activity.startActivity(Intent(activity, clazz))
     activity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
 }
@@ -50,15 +53,17 @@ fun doExitApp(activity: Activity) {
  * @param pesan is the logging message
  * @param context is only to get the name of which context that provide the log message
  */
-fun logi(pesan: String?) = Timber.tag("BIKE APP-LOG D").d( "Message : $pesan")
+fun logi(pesan: String?) = Timber.tag("BIKE APP-LOG D").d("Message : $pesan")
 
-fun logi(context: Context,pesan: String?) = Timber.tag("LOG D ${context.javaClass.simpleName}").d( "Message : $pesan")
+fun logi(context: Context, pesan: String?) =
+    Timber.tag("LOG D ${context.javaClass.simpleName}").d("Message : $pesan")
 
-fun loge(pesan: String?) = Timber.tag("BIKE APP-LOG E").e( "Message : $pesan")
+fun loge(pesan: String?) = Timber.tag("BIKE APP-LOG E").e("Message : $pesan")
 
-fun loge(context: Context,pesan: String?) = Timber.tag("LOG E ${context.javaClass.simpleName}").e( "Message : $pesan")
+fun loge(context: Context, pesan: String?) =
+    Timber.tag("LOG E ${context.javaClass.simpleName}").e("Message : $pesan")
 
-fun logw(pesan: String?) = Timber.tag("BIKE APP-LOG W").e( "Message : $pesan")
+fun logw(pesan: String?) = Timber.tag("BIKE APP-LOG W").e("Message : $pesan")
 
 /**
  * Shows a loading progress dialog.
@@ -139,7 +144,7 @@ fun Int.formatted(): String {
     longValue = originalString.toLong()
     val formatter = NumberFormat.getInstance(Locale("en", "ID")) as DecimalFormat
     formatter.applyPattern("#,###,###,###")
-    return formatter.format(longValue).replace(",",".")
+    return formatter.format(longValue).replace(",", ".")
 }
 
 fun getStatusBarHeight(context: Context): Int {
@@ -149,4 +154,21 @@ fun getStatusBarHeight(context: Context): Int {
         result = context.resources.getDimensionPixelSize(resourceId)
     }
     return result
+}
+
+fun ImageView.loadImageFromLocalResources(resourcesId: Int) {
+    setImageDrawable(
+        ContextCompat.getDrawable(
+            context,
+            resourcesId
+        )
+    )
+}
+
+fun ImageView.loadImageFromLocalResourcesWithIdentifier(path: String) {
+    Glide.with(context)
+        .asBitmap()
+        .load(context.resources.getIdentifier(path, "drawable", context.packageName))
+        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+        .into(this)
 }
