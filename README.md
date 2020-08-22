@@ -54,4 +54,6 @@ Get it on Figma 👇
 If you guys love it or got any issue, it will be pleasure to give me a feedback 👋
 Stay with me, next project will be uploaded later 😎
 
+Wanna contribute? Just make a pull request and you are in !
+
 #### Regards, Fizhu - 2020
