@@ -18,11 +18,14 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ui.activity.AuthActivity"
             android:screenOrientation="portrait"
+            android:exported="true"
             android:launchMode="singleTask"/>
         <activity android:name=".ui.activity.HomeActivity"
             android:screenOrientation="portrait"
+            android:exported="true"
             android:launchMode="singleTask"/>
-        <activity android:name=".ui.activity.SplashActivity">
+        <activity android:name=".ui.activity.SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -35,7 +35,7 @@ class AccountViewModel(
     val type: MutableLiveData<String> = MutableLiveData()
 
     init {
-        getUserData()
+        getUserDataFromDB()
     }
 
     fun count() {
@@ -72,7 +72,7 @@ class AccountViewModel(
             })
     }
 
-    fun getUserData() {
+    fun getUserDataFromDB() {
         compositeDisposable.route(repository.getUserById(repository.getId()?.toInt() ?: 0),
             io = {
                 if (it.isNotEmpty()) {

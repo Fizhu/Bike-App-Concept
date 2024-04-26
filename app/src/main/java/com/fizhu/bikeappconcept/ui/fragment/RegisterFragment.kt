@@ -15,6 +15,9 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.esafirm.imagepicker.features.ImagePicker
 import com.esafirm.imagepicker.features.ReturnMode
+import com.esafirm.imagepicker.features.cameraonly.CameraOnlyConfig
+import com.esafirm.imagepicker.features.registerImagePicker
+import com.esafirm.imagepicker.model.Image
 import com.fizhu.bikeappconcept.R
 import com.fizhu.bikeappconcept.databinding.FragmentRegisterBinding
 import com.fizhu.bikeappconcept.utils.base.BaseFragment
@@ -79,14 +82,11 @@ class RegisterFragment : BaseFragment() {
         }
 
         binding?.ivProfile?.setOnClickListener {
-            ImagePicker
-                .create(this)
-                .single()
-                .returnMode(ReturnMode.CAMERA_ONLY)
-                .theme(R.style.ImagePickerTheme)
-                .folderMode(true)
-                .enableLog(false)
-                .start()
+            launcher.launch(
+                CameraOnlyConfig(
+                    returnMode = ReturnMode.CAMERA_ONLY
+                )
+            )
         }
 
         observe(viewModel.isRegitered) {
@@ -97,9 +97,8 @@ class RegisterFragment : BaseFragment() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (ImagePicker.shouldHandle(requestCode, resultCode, data)) {
-            val image = ImagePicker.getFirstImageOrNull(data)
+    private val launcher = registerImagePicker { result: List<Image> ->
+        result.forEach { image ->
             val file = File(image.path)
             val uri = Uri.fromFile(file).toString()
             viewModel.photo.value = uri
@@ -109,7 +108,6 @@ class RegisterFragment : BaseFragment() {
                 .apply(RequestOptions().transform(CenterCrop(), RoundedCorners(16)))
                 .into(binding?.ivProfile!!)
         }
-        super.onActivityResult(requestCode, resultCode, data)
     }
 
     private fun initValidation() {

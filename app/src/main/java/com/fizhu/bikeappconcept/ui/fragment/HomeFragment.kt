@@ -45,7 +45,7 @@ class HomeFragment : BaseFragment() {
 
     override fun onInit() {
         handleBackPressed()
-        viewModel.getUserData()
+        viewModel.getUserDataFromDB()
         binding?.ivProfile?.setOnClickListener { (parentFragment?.parentFragment as MainFragment).gotToProfile() }
         initViewPager()
     }

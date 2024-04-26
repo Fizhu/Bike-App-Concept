@@ -1,6 +1,5 @@
 package com.fizhu.bikeappconcept.ui.fragment
 
-import android.content.Intent
 import android.graphics.Paint
 import android.net.Uri
 import android.os.Bundle
@@ -11,8 +10,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.esafirm.imagepicker.features.ImagePicker
 import com.esafirm.imagepicker.features.ReturnMode
+import com.esafirm.imagepicker.features.cameraonly.CameraOnlyConfig
+import com.esafirm.imagepicker.features.registerImagePicker
+import com.esafirm.imagepicker.model.Image
 import com.fizhu.bikeappconcept.R
 import com.fizhu.bikeappconcept.databinding.FragmentAccountBinding
 import com.fizhu.bikeappconcept.utils.base.BaseFragment
@@ -64,18 +65,15 @@ class AccountFragment : BaseFragment() {
             }
         }
         binding?.btnCam?.setOnClickListener {
-            ImagePicker
-                .create(this)
-                .single()
-                .returnMode(ReturnMode.CAMERA_ONLY)
-                .theme(R.style.ImagePickerTheme)
-                .folderMode(true)
-                .enableLog(false)
-                .start()
+            launcher.launch(
+                CameraOnlyConfig(
+                    returnMode = ReturnMode.CAMERA_ONLY
+                )
+            )
         }
         observe(viewModel.isSuccess) {
             if (it) {
-                viewModel.getUserData()
+                viewModel.getUserDataFromDB()
             } else {
                 requireActivity().toast("Update photo failed")
             }
@@ -115,13 +113,11 @@ class AccountFragment : BaseFragment() {
         viewModel.getFav()
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (ImagePicker.shouldHandle(requestCode, resultCode, data)) {
-            val image = ImagePicker.getFirstImageOrNull(data)
+    private val launcher = registerImagePicker { result: List<Image> ->
+        result.forEach { image ->
             val file = File(image.path)
             val uri = Uri.fromFile(file).toString()
             viewModel.updatePhoto(uri)
         }
-        super.onActivityResult(requestCode, resultCode, data)
     }
 }
