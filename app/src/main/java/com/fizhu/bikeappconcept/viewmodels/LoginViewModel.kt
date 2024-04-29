@@ -2,6 +2,7 @@ package com.fizhu.bikeappconcept.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.fizhu.bikeappconcept.data.models.User
 import com.fizhu.bikeappconcept.data.repository.Repository
 import com.fizhu.bikeappconcept.utils.SingleLiveEvent
 import com.fizhu.bikeappconcept.utils.base.BaseViewModel
@@ -14,7 +15,7 @@ import com.fizhu.bikeappconcept.utils.ext.route
 
 class LoginViewModel(
     private val repository: Repository
-): BaseViewModel(){
+) : BaseViewModel() {
 
     val username: MutableLiveData<String> = MutableLiveData()
     val password: MutableLiveData<String> = MutableLiveData()
@@ -23,8 +24,15 @@ class LoginViewModel(
     val isLoggedIn: LiveData<Boolean>
         get() = _isLoggedIn
 
+    init {
+        addAndCheckDummyUser()
+    }
+
     fun submitLogin() {
-        compositeDisposable.route(repository.getUserByUsernamePassword(username.value ?: "", password.value?:""),
+        compositeDisposable.route(repository.getUserByUsernamePassword(
+            username.value ?: "",
+            password.value ?: ""
+        ),
             io = {
                 if (it.isNotEmpty()) {
                     repository.setId(it[0].id.toString())
@@ -37,6 +45,32 @@ class LoginViewModel(
             error = {
                 _isLoggedIn.postValue(false)
             }
+        )
+    }
+
+    private fun addAndCheckDummyUser() {
+        compositeDisposable.route(repository.getUserByUsernamePassword("userdemo", "123456"),
+            io = {
+                if (it.isEmpty()) {
+                    addUserDemo()
+                }
+            },
+            error = {
+                addUserDemo()
+                it.printStackTrace()
+            }
+        )
+    }
+
+    private fun addUserDemo() {
+        repository.insertUser(
+            User(
+                id = null,
+                name = "User Demo",
+                username = "userdemo",
+                password = "123456",
+                photo = ""
+            )
         )
     }
 
